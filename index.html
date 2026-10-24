@@ -64,6 +64,7 @@
 </head>
 <body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
   
+  <!-- UNIFIED HEADER -->
   <header class="fixed top-0 w-full z-50 shadow-[0_4px_20px_rgba(63,0,0,0.18)]" style="background-color: #670000;">
     <div class="min-h-20 py-space-xs w-full px-margin flex flex-wrap items-center justify-between gap-space-sm md:gap-gutter">
       <div class="flex items-center gap-space-md">
@@ -86,6 +87,7 @@
     </nav>
   </header>
 
+  <!-- UNIFIED MAIN CONTAINER WITH VIEWS -->
   <main class="w-full pt-32 bg-surface min-h-screen">
 
     <!-- VIEW 1: BERANDA -->
@@ -240,7 +242,7 @@
       </div>
     </div>
 
-    <!-- VIEW 2: CARI TAMU LAMA -->
+    <!-- VIEW 2: CARI TAMU LAMA (CHECK-IN CEPAT) -->
     <div id="view-cari-tamu-lama" class="app-view flex flex-col w-full hidden">
       <div class="relative w-full overflow-hidden py-space-xl px-margin text-white" style="background-color: #3f0000;">
         <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#fed488 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
@@ -288,6 +290,7 @@
             </div>
           </div>
           
+          <!-- Keypad Sentuh Kios Mandiri -->
           <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col gap-space-md border border-[#ffdea5]/20">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-space-sm">
@@ -316,6 +319,7 @@
             </div>
           </div>
 
+          <!-- RESULT FOUND SECTION -->
           <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col gap-space-lg hidden" id="result-found-section">
             <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md pb-space-md bg-surface-container-low p-space-md rounded-xl">
               <div class="flex items-start gap-space-md">
@@ -342,6 +346,7 @@
               </div>
             </div>
 
+            <!-- FORMULIR ISIAN -->
             <form class="flex flex-col gap-space-md pt-space-xs" onsubmit="event.preventDefault();">
               <div class="flex items-center gap-space-sm">
                 <span class="material-symbols-outlined text-headline-sm" style="color: #775a19;">edit_calendar</span>
@@ -422,7 +427,7 @@
     <!-- VIEW 3: FORMULIR PENDAFTARAN TAMU BARU -->
     <div id="view-registrasi-tamu-baru" class="app-view flex flex-col w-full relative hidden">
       <div class="absolute inset-0 pointer-events-none opacity-[0.035] overflow-hidden">
-        <div class="w-full h-full bg-cover bg-center"></div>
+        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACrk7TLWOaN2wXrFu0I4xMWj5YcpSvMKljWYI4D4NyDo_bWb4u2OmCLA50trPOisXh6wNAe5NQWNrVAp4vr1qgNZfcjY3KcgguNOhNrd2R0Z6d6ZiEkNqR1OQKKa0zg_V2dp4JWpp2BUYNhXV-FX4y-rO0WtqrO8i1yMe4L9eadRBU6cDu3BrDilgJj5NzlP7Yg8ZW4_cVWDxCjcz_3eMxKF-bi6GjAki_JnYBIqTTEB5v_viZgxsdyg');"></div>
       </div>
       <div class="relative w-full max-w-7xl mx-auto px-4 md:px-8 py-6 flex flex-col gap-8">
         <div class="bg-surface-container-lowest shadow-md rounded-xl p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -744,6 +749,10 @@
                 <h2 class="font-headline-md text-headline-md text-white font-bold">Daftar Sebagai Tamu Baru (Registrasi Pertama Kali)</h2>
                 <p class="font-body-md text-body-md text-white/90 mt-space-xs leading-relaxed">Khusus untuk tamu eksternal (Bawaslu, partai politik, instansi pemerintah, media, LSM, civitas akademika, dan masyarakat) yang baru pertama kali berkunjung. Cukup lengkapi identitas dasar dan tujuan kunjungan ke Bagian terkait.</p>
               </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm py-space-xs text-white/90 font-body-sm text-body-sm">
+                <div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg" style="background-color: rgba(63,0,0,0.4);"><span class="material-symbols-outlined text-[#ffdea5] text-title-md">speed</span><span>Proses kilat di lobi KPU</span></div>
+                <div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg" style="background-color: rgba(63,0,0,0.4);"><span class="material-symbols-outlined text-[#ffdea5] text-title-md">account_balance</span><span>Langsung terarah ke Bagian</span></div>
+              </div>
             </div>
             <div class="mt-space-lg pt-space-md relative z-10">
               <a class="nav-link btn-kpu-brown w-full inline-flex items-center justify-center gap-space-sm py-3.5 px-space-lg rounded-lg font-headline-sm text-headline-sm transition-all shadow-md cursor-pointer font-bold" data-target="view-registrasi-tamu-baru" href="#registrasi-tamu-baru">
@@ -776,22 +785,89 @@
                   <span>Cari Ulang Data Kehadiran</span>
                 </button>
               </form>
+              <div class="hidden p-space-sm rounded-lg font-body-sm text-body-sm" id="recheckAlert" style="background-color: rgba(254, 212, 136, 0.6); color: #785a1a;">Memverifikasi kembali ke pangkalan data SAPA KPU RIAU...</div>
+            </div>
+            <div class="pt-space-md mt-space-md bg-surface-container-low/50 p-space-sm rounded-lg flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-headline-sm" style="color: #775a19;">lightbulb</span>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Tips: Pastikan memasukkan 10-14 digit nomor yang aktif dan sesuai data pendaftaran.</p>
             </div>
           </div>
+        </div>
+
+        <div class="bg-surface-container-low rounded-xl p-space-md md:p-space-lg shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg">
+          <div class="flex items-start gap-space-md">
+            <div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 mt-0.5" style="color: #3f0000;">
+              <span class="material-symbols-outlined text-[28px]">support_agent</span>
+            </div>
+            <div class="flex flex-col gap-0.5">
+              <div class="flex items-center gap-space-xs">
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Bantuan Front Desk Lobi KPU Provinsi Riau</h3>
+              </div>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">Mengalami kendala pencarian riwayat atau membutuhkan konfirmasi instansi? Silakan hubungi WhatsApp Help Desk di <strong class="font-badge-code text-badge-code font-bold px-1 py-0.5 rounded" style="background-color: rgba(254, 212, 136, 0.5); color: #3f0000;">0822-5533-3911</strong> atau sampaikan langsung kepada <strong class="text-on-surface font-semibold">Petugas Front Desk KPU Provinsi Riau</strong> di meja lobi utama untuk verifikasi manual.</p>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-space-xs shrink-0 bg-surface-container-lowest px-space-md py-space-sm rounded-lg shadow-sm w-full md:w-auto">
+            <div class="flex items-center gap-1.5 font-label-lg text-label-lg font-semibold" style="color: #3f0000;">
+              <span class="material-symbols-outlined text-body-md">schedule</span>
+              <span>Jam Pelayanan Tamu</span>
+            </div>
+            <span class="font-badge-code text-badge-code text-on-surface-variant font-bold">Senin – Kamis : 07.30 – 16.00 WIB • Jumat : 07.30 – 16.30 WIB</span>
+            <span class="font-body-sm text-body-sm italic" style="color: #775a19;">KPU Melayani dengan Sepenuh Hati</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center justify-center py-space-sm text-center">
+          <div class="flex items-center gap-space-sm font-headline-sm text-headline-sm font-bold tracking-wide" style="color: #3f0000;">
+            <span class="material-symbols-outlined" style="color: #775a19; font-variation-settings: 'FILL' 1;">shield</span>
+            <span>KPU MELAYANI</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-xl">
+            Melayani dengan Integritas, Transparansi, dan Akuntabilitas untuk Seluruh Tamu dan Masyarakat di Lingkungan Komisi Pemilihan Umum Provinsi Riau.
+          </p>
         </div>
       </div>
     </div>
 
-    <!-- VIEW 5: KONFIRMASI & SURVEI -->
+    <!-- VIEW 5: KONFIRMASI & SURVEI (TIKET & ID BADGE) -->
     <div id="view-konfirmasi-dan-survei" class="app-view flex flex-col w-full hidden">
       <div class="relative w-full overflow-hidden pb-space-xl">
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-gradient-to-b from-[#3f0000]/10 via-[#fed488]/20 to-transparent blur-3xl pointer-events-none -z-10"></div>
+        <div class="absolute top-1/4 right-0 w-96 h-96 bg-[#775a19]/5 rounded-full blur-2xl pointer-events-none -z-10"></div>
+        <div class="absolute bottom-10 left-4 w-80 h-80 bg-[#670000]/5 rounded-full blur-2xl pointer-events-none -z-10"></div>
         <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin pt-space-md">
+          <div class="w-full max-w-3xl mx-auto mb-space-lg">
+            <div class="flex items-center justify-between relative">
+              <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-surface-variant z-0">
+                <div class="h-full bg-[#775a19] w-full transition-all duration-700"></div>
+              </div>
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-10 h-10 rounded-full text-white flex items-center justify-center shadow-md" style="background-color: #3f0000;"><span class="material-symbols-outlined text-[18px]">done</span></div>
+                <span class="font-label-md text-label-md text-on-surface font-medium mt-1.5 hidden sm:block">Identitas Diri</span>
+              </div>
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-10 h-10 rounded-full text-white flex items-center justify-center shadow-md" style="background-color: #3f0000;"><span class="material-symbols-outlined text-[18px]">done</span></div>
+                <span class="font-label-md text-label-md text-on-surface font-medium mt-1.5 hidden sm:block">Tujuan Kunjungan</span>
+              </div>
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-10 h-10 rounded-full text-white flex items-center justify-center shadow-md" style="background-color: #3f0000;"><span class="material-symbols-outlined text-[18px]">done</span></div>
+                <span class="font-label-md text-label-md text-on-surface font-medium mt-1.5 hidden sm:block">Foto &amp; Verifikasi</span>
+              </div>
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-10 h-10 rounded-full font-headline-sm flex items-center justify-center shadow-lg ring-4 ring-[#fed488]/40" style="background-color: #fed488; color: #785a1a;"><span class="material-symbols-outlined text-[20px]">rate_review</span></div>
+                <span class="font-label-md text-label-md font-bold mt-1.5 hidden sm:block" style="color: #775a19;">Konfirmasi &amp; Survei Kepuasan</span>
+              </div>
+            </div>
+          </div>
+
           <div class="text-center max-w-2xl mx-auto mb-space-xl">
             <div class="inline-flex items-center justify-center p-3 rounded-full text-[#ffdea5] shadow-xl mb-space-sm" style="background-color: #3f0000;">
               <div class="w-14 h-14 rounded-full flex items-center justify-center" style="background-color: #670000;"><span class="material-symbols-outlined text-[36px] text-[#ffdea5]">check_circle</span></div>
             </div>
+            <div class="flex items-center justify-center gap-2 mb-1">
+              <span class="px-2.5 py-0.5 rounded-full font-label-md text-label-md font-semibold uppercase tracking-wider" style="background-color: #fed488; color: #785a1a;">Kunjungan Terkonfirmasi • SAPA KPU RIAU</span>
+            </div>
             <h2 class="font-headline-lg text-headline-lg tracking-tight font-bold" style="color: #3f0000;">Registrasi Kunjungan Berhasil!</h2>
-            <p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">Data kunjungan Anda telah resmi tercatat di sistem KPU Provinsi Riau.</p>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">Selamat datang di Komisi Pemilihan Umum Provinsi Riau. Data kunjungan Anda telah resmi tercatat. Mohon kesediaan Anda mengisi Survei Kepuasan Pelayanan untuk kemajuan layanan publik kami.</p>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
@@ -799,13 +875,19 @@
               <div class="w-full bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden border border-[#e0bfba]/30" id="proof-card">
                 <div class="px-space-md py-4 text-white flex items-center justify-between" style="background-color: #670000;">
                   <div class="flex items-center gap-space-sm">
-                    <img alt="Logo KPU" class="w-9 h-9 object-contain" src="https://www.kpu.go.id/images/1627539868logo-kpu.png">
+                    <div class="w-11 h-11 p-1 rounded-lg bg-white/15 flex items-center justify-center shadow-inner">
+                      <img alt="Logo KPU Provinsi Riau" class="w-9 h-9 object-contain" src="https://www.kpu.go.id/images/1627539868logo-kpu.png">
+                    </div>
                     <div>
-                      <span class="font-badge-code text-[11px] text-[#ffdea5] uppercase font-bold block">BUKTI REGISTRASI KUNJUNGAN</span>
+                      <span class="font-badge-code text-[11px] tracking-wider text-[#ffdea5] uppercase font-bold block">BUKTI REGISTRASI KUNJUNGAN</span>
                       <h3 class="font-headline-sm text-headline-sm text-white font-bold leading-tight">KPU PROVINSI RIAU</h3>
                     </div>
                   </div>
+                  <div class="text-right">
+                    <span class="px-2.5 py-1 rounded font-badge-code text-badge-code font-bold uppercase shadow-sm inline-block" style="background-color: #fed488; color: #785a1a;">TERVERIFIKASI</span>
+                  </div>
                 </div>
+                <div class="h-1.5 w-full bg-gradient-to-r from-[#ffdea5] via-[#fed488] to-[#ffb4a8]"></div>
                 <div class="p-space-lg flex flex-col gap-space-md">
                   <div class="flex flex-col sm:flex-row items-center sm:items-start gap-space-md">
                     <div class="w-28 h-36 rounded-lg overflow-hidden bg-surface-container shadow-md shrink-0 flex items-center justify-center text-[#3f0000]" id="card-photo-container">
@@ -818,19 +900,51 @@
                         <span class="material-symbols-outlined text-[16px]" style="color: #775a19;">account_balance</span>
                         <span id="card-guest-org" class="font-semibold text-on-surface truncate">Instansi Tamu</span>
                       </div>
+                      <div class="grid grid-cols-2 gap-space-sm mt-3 pt-3 bg-surface-container-low p-2.5 rounded-lg">
+                        <div class="flex flex-col"><span class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-wider">Tanggal Masuk</span><span id="card-date" class="font-tabular-time text-[13px] font-bold" style="color: #3f0000;">--</span></div>
+                        <div class="flex flex-col"><span class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-wider">Waktu Registrasi</span><span id="card-time" class="font-tabular-time text-[13px] font-bold" style="color: #3f0000;">--</span></div>
+                      </div>
                     </div>
                   </div>
+                  <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-2">
+                    <div class="flex items-center justify-between"><span class="font-label-md text-label-md text-on-surface-variant font-medium uppercase tracking-wide">PEJABAT / BAGIAN TUJUAN:</span><span id="card-unit" class="font-label-md text-label-md font-bold" style="color: #3f0000;">Bagian Dituju</span></div>
+                    <div class="flex items-start gap-2.5 text-on-surface">
+                      <span class="material-symbols-outlined text-[20px] mt-0.5" style="color: #775a19;">meeting_room</span>
+                      <div>
+                        <span id="card-purpose" class="font-body-sm text-body-sm text-on-surface-variant block">Keperluan: -</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-surface-container-low px-space-md py-2.5 flex items-center justify-between text-on-surface-variant font-body-sm border-t border-[#e0bfba]/20">
+                  <div class="flex items-center gap-1.5 font-medium" style="color: #775a19;"><span class="material-symbols-outlined text-[16px]">verified</span><span>Tercatat Resmi dalam Sistem KPU Riau</span></div>
                 </div>
               </div>
             </div>
 
             <div class="lg:col-span-5 flex flex-col gap-space-lg">
-              <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-xl border-2 border-[#fed488] flex flex-col gap-space-md">
-                <h3 class="font-title-md text-title-md font-bold" style="color: #3f0000;">Selesai / Sembunyikan</h3>
-                <a class="nav-link btn-kpu-maroon w-full py-3.5 px-space-md rounded-lg font-label-lg text-label-lg font-bold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer" data-target="view-beranda" href="#beranda">
-                  <span class="material-symbols-outlined text-title-md">home</span>
-                  <span>Kembali ke Beranda</span>
-                </a>
+              <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-xl border-2 border-[#fed488] flex flex-col gap-space-md relative overflow-hidden">
+                <div class="flex items-start justify-between gap-space-sm">
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-headline-sm" style="color: #775a19;">thumb_up</span>
+                    <h3 class="font-title-md text-title-md font-bold" style="color: #3f0000;">Survei Kepuasan Pelayanan</h3>
+                  </div>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Bantu kami meningkatkan kualitas layanan Komisi Pemilihan Umum Provinsi Riau dengan memberikan evaluasi pengalaman Anda hari ini.</p>
+                <div class="flex flex-col items-center justify-center p-space-md bg-surface-container-low rounded-xl border border-[#fed488]/40 my-1">
+                  <div class="p-3 bg-surface-container-lowest rounded-lg shadow-md flex items-center justify-center mb-space-sm">
+                    <svg class="w-36 h-36 text-[#3f0000]" fill="currentColor" viewBox="0 0 120 120">
+                      <rect fill="currentColor" height="30" rx="3" width="30" x="10" y="10"></rect><rect fill="#FFFFFF" height="18" rx="2" width="18" x="16" y="16"></rect><rect fill="currentColor" height="8" rx="1" width="8" x="21" y="21"></rect><rect fill="currentColor" height="30" rx="3" width="30" x="80" y="10"></rect><rect fill="#FFFFFF" height="18" rx="2" width="18" x="86" y="16"></rect><rect fill="currentColor" height="8" rx="1" width="8" x="91" y="21"></rect><rect fill="currentColor" height="30" rx="3" width="30" x="10" y="80"></rect><rect fill="#FFFFFF" height="18" rx="2" width="18" x="16" y="86"></rect><rect fill="currentColor" height="8" rx="1" width="8" x="21" y="91"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="48" y="14"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="58" y="14"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="68" y="24"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="48" y="24"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="14" y="48"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="24" y="58"></rect><rect fill="#775a19" height="8" rx="1" width="8" x="48" y="48"></rect><rect fill="#775a19" height="8" rx="1" width="8" x="64" y="48"></rect><rect fill="#775a19" height="8" rx="1" width="8" x="48" y="64"></rect><rect fill="#775a19" height="8" rx="1" width="8" x="64" y="64"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="80" y="48"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="92" y="58"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="80" y="70"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="48" y="84"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="58" y="94"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="70" y="84"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="84" y="94"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="98" y="84"></rect><rect fill="currentColor" height="6" rx="1" width="6" x="98" y="98"></rect>
+                    </svg>
+                  </div>
+                  <span class="font-label-lg text-label-lg font-bold text-center" style="color: #3f0000;">Formulir Survei Kepuasan (SKM)</span>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant text-center mt-1 max-w-xs">Scan QR Code di atas menggunakan ponsel Anda untuk mengisi Formulir Survei Kepuasan Pelayanan KPU Riau.</p>
+                </div>
+                <div class="flex flex-col gap-space-sm">
+                  <button class="w-full py-3 px-space-md rounded-lg bg-surface-container hover:bg-[#dae2fd] font-label-lg text-label-lg font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer" id="btn-copy-survey" type="button" style="color: #3f0000;"><span class="material-symbols-outlined text-headline-sm" style="color: #775a19;">link</span><span>Salin Tautan Survei</span></button>
+                  <a class="nav-link btn-kpu-maroon w-full py-3.5 px-space-md rounded-lg font-label-lg text-label-lg font-bold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer" data-target="view-beranda" href="#beranda"><span class="material-symbols-outlined text-title-md">home</span><span>Selesai / Kembali ke Beranda</span></a>
+                </div>
+                <p class="font-body-sm text-[12px] text-on-surface-variant text-center mt-1 leading-normal italic">"Penilaian Anda sangat berharga bagi peningkatan integritas dan keterbukaan informasi publik di KPU Riau"</p>
               </div>
             </div>
           </div>
@@ -840,16 +954,18 @@
 
   </main>
 
+  <!-- TOAST NOTIFICATION MODAL -->
   <div class="fixed bottom-6 right-6 bg-surface-container-lowest text-on-surface p-space-md rounded-xl shadow-2xl flex items-center gap-space-sm transform translate-y-24 opacity-0 transition-all duration-300 z-50 pointer-events-none" id="toast-notification">
     <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background-color: #fed488; color: #785a1a;">
       <span class="material-symbols-outlined text-headline-sm">check_circle</span>
     </div>
     <div class="flex flex-col">
       <span class="font-title-md text-title-md font-bold" id="toast-title" style="color: #3f0000;">Berhasil!</span>
-      <span class="font-body-sm text-body-sm text-on-surface-variant" id="toast-desc">-</span>
+      <span class="font-body-sm text-body-sm text-on-surface-variant" id="toast-desc">Tautan formulir survei kepuasan telah berhasil disalin.</span>
     </div>
   </div>
 
+  <!-- UNIFIED FOOTER -->
   <footer class="w-full border-t border-slate-200/80 bg-surface-container-lowest text-on-surface-variant font-sans mt-auto">
     <div class="max-w-6xl mx-auto px-margin py-space-xl grid grid-cols-1 md:grid-cols-3 gap-gutter items-start">
       <div class="flex flex-col gap-space-xs">
@@ -858,6 +974,26 @@
           <span>KPU Provinsi Riau</span>
         </div>
         <p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mt-1">Layanan administrasi dan penerimaan tamu resmi Komisi Pemilihan Umum Provinsi Riau.</p>
+        <div class="flex items-center gap-1.5 text-body-sm font-body-sm font-medium mt-space-xs" style="color: #775a19;">
+          <span class="material-symbols-outlined text-body-md">schedule</span>
+          <span>Jam Layanan: Senin – Kamis 07.30 – 16.00 WIB • Jumat 07.30 – 16.30 WIB</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-space-xs">
+        <h5 class="text-title-md font-title-md text-on-surface font-bold">Maklumat &amp; Tata Tertib</h5>
+        <ul class="text-body-sm font-body-sm space-y-1 mt-1 text-on-surface-variant">
+          <li class="flex items-start gap-1.5"><span class="material-symbols-outlined text-body-md mt-0.5 shrink-0" style="color: #775a19;">check_circle</span><span>Berpakaian rapi, sopan, dan mematuhi etika bertamu</span></li>
+          <li class="flex items-start gap-1.5"><span class="material-symbols-outlined text-body-md mt-0.5 shrink-0" style="color: #775a19;">verified_user</span><span>Menjaga ketertiban &amp; mematuhi protokol kantor KPU Provinsi Riau</span></li>
+          <li class="flex items-start gap-1.5"><span class="material-symbols-outlined text-body-md mt-0.5 shrink-0" style="color: #775a19;">gavel</span><span class="font-medium" style="color: #775a19;">Bebas Gratifikasi &amp; Pungli (Zona Integritas WBK/WBBM)</span></li>
+        </ul>
+      </div>
+      <div class="flex flex-col gap-space-xs">
+        <h5 class="text-title-md font-title-md text-on-surface font-bold">Kontak &amp; Layanan</h5>
+        <ul class="text-body-sm font-body-sm space-y-1 mt-1">
+          <li class="flex items-center gap-1.5"><span class="material-symbols-outlined" style="color: #775a19;">chat</span><span>WhatsApp: 0822-5533-3911</span></li>
+          <li class="flex items-center gap-1.5"><span class="material-symbols-outlined" style="color: #775a19;">mail</span><span>riau@kpu.go.id</span></li>
+          <li class="flex items-center gap-1.5"><span class="material-symbols-outlined" style="color: #775a19;">language</span><a class="hover:text-[#3f0000] transition-colors underline decoration-slate-300" href="https://riau.kpu.go.id" rel="noreferrer" target="_blank">riau.kpu.go.id</a></li>
+        </ul>
       </div>
     </div>
     <div class="border-t border-slate-200/80 bg-surface-container-low py-4 px-margin">
@@ -868,11 +1004,9 @@
     </div>
   </footer>
 
+  <!-- SCRIPT LOGIKA JAVASCRIPT -->
   <script>
-    // ==========================================
-    // MASUKKAN URL WEB APP GOOGLE APPS SCRIPT ANDA DI SINI
-    // ==========================================
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwezoarSDBCnx_TKGLbpo9TLRtDUBEY73y82vmNlDTww9bIPyfs57Pwr1lY030Dx5YR/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxWfZYtzOCKjVLqaEj8geUbTsDH2j7A1gBflq0YMW5lm4_IDg7KbPcLLm-zQ_uzBf_T/exec";
 
     let mediaStream = null;
     let capturedImageData = "";
@@ -881,6 +1015,7 @@
     let repeatCount = 0;
 
     document.addEventListener("DOMContentLoaded", function () {
+      
       const navLinks = document.querySelectorAll('.nav-link, header nav a');
       const views = document.querySelectorAll('.app-view');
 
@@ -1197,7 +1332,7 @@
               switchView('view-nomor-tidak-terdaftar');
             }
           } catch (error) {
-            console.warn("Gagal terhubung ke Google Sheets API:", error);
+            console.warn("Gagal terhubung ke Apps Script:", error);
             const searchedDisp = document.getElementById('searchedNumberDisplay');
             if (searchedDisp) searchedDisp.textContent = phoneNumber;
             switchView('view-nomor-tidak-terdaftar');
@@ -1289,12 +1424,12 @@
             btnSubmitVisitor.innerHTML = "Menyimpan ke Database...";
             await fetch(WEB_APP_URL, {
               method: "POST",
-              mode: "no-cors", // Penting untuk bypass CORS policy Google Apps Script
+              mode: "no-cors",
               body: JSON.stringify(formData)
             });
             showToast('Berhasil!', 'Data kunjungan tersimpan di Google Sheets KPU Riau.');
           } catch (error) {
-            console.warn("Gagal terhubung ke Apps Script:", error);
+            console.warn("Gagal terhubung ke GAS:", error);
           } finally {
             btnSubmitVisitor.innerHTML = `<span class="material-symbols-outlined text-[24px]">check_circle</span><span>Simpan Kunjungan &amp; Selesai</span><span class="material-symbols-outlined text-[20px]">arrow_forward</span>`;
             switchView('view-konfirmasi-dan-survei');
@@ -1341,8 +1476,21 @@
       }
 
       function populateTicketProof(data) {
+        const now = new Date();
+        const pad = (n) => String(n).padStart(2, '0');
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'];
+
+        const dateFormatted = `${days[now.getDay()]}, ${pad(now.getDate())} ${months[now.getMonth()]} ${now.getFullYear()}`;
+        const timeFormatted = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} WIB`;
+
         if (document.getElementById('card-guest-name')) document.getElementById('card-guest-name').textContent = data.nama_lengkap || "-";
         if (document.getElementById('card-guest-org')) document.getElementById('card-guest-org').textContent = data.instansi_asal || "-";
+        if (document.getElementById('card-unit')) document.getElementById('card-unit').textContent = data.unit_tujuan || "-";
+        if (document.getElementById('card-purpose')) document.getElementById('card-purpose').textContent = "Keperluan: " + (data.maksud_kunjungan || "-");
+        
+        if (document.getElementById('card-date')) document.getElementById('card-date').textContent = dateFormatted;
+        if (document.getElementById('card-time')) document.getElementById('card-time').textContent = timeFormatted;
         
         const cardPhoto = document.getElementById('card-guest-photo');
         const cardIcon = document.getElementById('card-guest-icon');
@@ -1369,6 +1517,14 @@
           toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
           toast.classList.remove('translate-y-0', 'opacity-100');
         }, 3500);
+      }
+
+      const btnCopySurvey = document.getElementById('btn-copy-survey');
+      if (btnCopySurvey) {
+        btnCopySurvey.addEventListener('click', () => {
+          navigator.clipboard.writeText(window.location.href);
+          showToast('Berhasil!', 'Tautan formulir survei kepuasan telah berhasil disalin ke clipboard.');
+        });
       }
     });
   </script>
