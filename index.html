@@ -360,14 +360,14 @@
                   <div class="relative">
                     <select class="w-full h-12 pl-space-md pr-10 text-body-md font-medium text-on-surface bg-surface-container-low rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-[#775a19] focus:bg-surface-container-lowest transition-all" id="dest-bagian">
                       <option disabled selected value="">Pilih Bagian KPU yang Dituju...</option>
-                      <option value="1. Sekretaris">Sekretaris</option>
-                      <option value="2. Komisioner">Komisioner</option>
-                      <option value="3. Bagian Keuangan, Umum dan Logistik">Bagian Keuangan, Umum, dan Logistik</option>
-                      <option value="4. Bagian Partisipasi, Humas dan Organisasi">Bagian Partisipasi, Humas dan Organisasi</option>
-                      <option value="5. Bagian Teknis Penyelenggaraan Pemilu dan Hukum">Bagian Teknis Penyelenggaraan Pemilu dan Hukum</option>
-                      <option value="6. Bagian Perencanaan, Data dan Informasi">Bagian Perencanaan, Data dan Informasi</option>
-                      <option value="7. Meja Layanan PPID / Informasi Publik">Meja Layanan PPID / Informasi Publik</option>
-                      <option value="8. Lainnya">Lainnya</option>
+                      <option value="Komisioner">Komisioner</option>
+					  <option value="Sekretaris">Sekretaris</option>
+                      <option value="Bagian Keuangan, Umum dan Logistik">Bagian Keuangan, Umum, dan Logistik</option>
+                      <option value="Bagian Partisipasi, Humas dan Organisasi">Bagian Partisipasi, Humas dan Organisasi</option>
+                      <option value="Bagian Teknis Penyelenggaraan Pemilu dan Hukum">Bagian Teknis Penyelenggaraan Pemilu dan Hukum</option>
+                      <option value="Bagian Perencanaan, Data dan Informasi">Bagian Perencanaan, Data dan Informasi</option>
+                      <option value="Meja Layanan PPID / Informasi Publik">Meja Layanan PPID / Informasi Publik</option>
+                      <option value="Lainnya">Lainnya</option>
                     </select>
                     <span class="material-symbols-outlined absolute right-3 top-3 text-[#775a19] pointer-events-none">expand_more</span>
                   </div>
@@ -544,14 +544,14 @@
                     <span class="material-symbols-outlined absolute left-3.5 text-[#8c716d] text-[20px]">domain</span>
                     <select class="w-full pl-11 pr-10 py-3 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] appearance-none cursor-pointer" id="unit_tujuan">
                       <option disabled selected value="">Pilih Bagian KPU yang Dituju...</option>
-                      <option value="1. Komisioner">Komisioner</option>
-		      <option value="2. Sekretaris">Sekretaris</option>
-                      <option value="3. Bagian Keuangan, Umum dan Logistik">Bagian Keuangan, Umum, dan Logistik</option>
-                      <option value="4. Bagian Partisipasi, Humas dan Organisasi">Bagian Partisipasi, Humas dan Organisasi</option>
-                      <option value="5. Bagian Teknis Penyelenggaraan Pemilu dan Hukum">Bagian Teknis Penyelenggaraan Pemilu dan Hukum</option>
-                      <option value="6. Bagian Perencanaan, Data dan Informasi">Bagian Perencanaan, Data dan Informasi</option>
-                      <option value="7. Meja Layanan PPID / Informasi Publik">Meja Layanan PPID / Informasi Publik</option>
-                      <option value="8. Lainnya">Lainnya</option>
+                      <option value="Komisioner">Komisioner</option>
+		      		  <option value="Sekretaris">Sekretaris</option>
+                      <option value="Bagian Keuangan, Umum dan Logistik">Bagian Keuangan, Umum, dan Logistik</option>
+                      <option value="Bagian Partisipasi, Humas dan Organisasi">Bagian Partisipasi, Humas dan Organisasi</option>
+                      <option value="Bagian Teknis Penyelenggaraan Pemilu dan Hukum">Bagian Teknis Penyelenggaraan Pemilu dan Hukum</option>
+                      <option value="Bagian Perencanaan, Data dan Informasi">Bagian Perencanaan, Data dan Informasi</option>
+                      <option value="Meja Layanan PPID / Informasi Publik">Meja Layanan PPID / Informasi Publik</option>
+                      <option value="Lainnya">Lainnya</option>
                     </select>
                     <span class="material-symbols-outlined absolute right-3 pointer-events-none text-[#8c716d] text-[20px]">expand_more</span>
                   </div>
@@ -1256,7 +1256,7 @@
       }
 
       if (snapBtn) {
-        snapBtn.addEventListener('click', () => {
+        snapBtn.addEventListener('click', async () => {
           if (flashOverlay) {
             flashOverlay.classList.remove('opacity-0');
             flashOverlay.classList.add('opacity-90');
@@ -1266,17 +1266,34 @@
             }, 250);
           }
 
-          if (video && !video.classList.contains('hidden') && canvas) {
-            const context = canvas.getContext('2d');
-            canvas.width = video.videoWidth || 300;
-            canvas.height = video.videoHeight || 300;
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            capturedImageData = canvas.toDataURL('image/png');
-            video.classList.add('hidden');
-            canvas.classList.remove('hidden');
+          if (video && !video.classList.contains('hidden')) {
+            try {
+              // Optimasi otomatis: Resize max lebar 500px dan kompres ke format WebP kualitas 0.7
+              capturedImageData = await optimizeImage(video, 500, 0.7);
+              
+              // Tampilkan hasil di canvas/video preview
+              video.classList.add('hidden');
+              if (canvas) {
+                const ctx = canvas.getContext('2d');
+                const imgPre = new Image();
+                imgPre.onload = () => {
+                  canvas.width = imgPre.width;
+                  canvas.height = imgPre.height;
+                  ctx.drawImage(imgPre, 0, 0);
+                  canvas.classList.remove('hidden');
+                };
+                imgPre.src = capturedImageData;
+              }
+              showToast("Foto Berhasil Dioptimasi", "Selfie berhasil dikompres & diubah ke format ringan.");
+            } catch (e) {
+              console.warn("Gagal mengoptimasi gambar webcam:", e);
+              capturedImageData = "DEFAULT_SIMULATED_SELFIE";
+            }
           } else {
             capturedImageData = "DEFAULT_SIMULATED_SELFIE";
           }
+        });
+      }
           showToast("Foto Berhasil Diambil", "Selfie verifikasi wajah telah berhasil ditangkap.");
         });
       }
@@ -1293,25 +1310,32 @@
         });
       }
 
-      if (filePhotoInput) {
-        filePhotoInput.addEventListener('change', function (e) {
-          const file = e.target.files[0];
-          if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-              capturedImageData = event.target.result;
-              if (placeholderImg) {
-                placeholderImg.innerHTML = `<img src="${capturedImageData}" class="w-full h-full object-cover">`;
-                placeholderImg.classList.remove('hidden');
-              }
-              if (video) video.classList.add('hidden');
-              if (canvas) canvas.classList.add('hidden');
-              showToast("Foto Berhasil Diunggah", "Foto dari perangkat telah dimuat.");
-            };
-            reader.readAsDataURL(file);
-          }
-        });
-      }
+		if (filePhotoInput) {
+		        filePhotoInput.addEventListener('change', async function (e) {
+		          const file = e.target.files[0];
+		          if (file) {
+		            const reader = new FileReader();
+		            reader.onload = async function (event) {
+		              try {
+		                // Kompres dan ubah file upload mentah menjadi WebP yang ringan
+		                capturedImageData = await optimizeImage(event.target.result, 500, 0.7);
+		
+		                if (placeholderImg) {
+		                  placeholderImg.innerHTML = `<img src="${capturedImageData}" class="w-full h-full object-cover">`;
+		                  placeholderImg.classList.remove('hidden');
+		                }
+		                if (video) video.classList.add('hidden');
+		                if (canvas) canvas.classList.add('hidden');
+		                
+		                showToast("Foto Berhasil Dimuat", "File dikompres otomatis agar ringan.");
+		              } catch (err) {
+		                console.warn("Gagal memproses file gambar:", err);
+		              }
+		            };
+		            reader.readAsDataURL(file);
+		          }
+		        });
+		      }
 
       const phoneInput = document.getElementById('phone-input');
       const btnSearch = document.getElementById('btn-search-trigger');
@@ -1574,6 +1598,52 @@
         });
       }
     });
+	  // Fungsi universal untuk Resize, Kompres, dan Ubah ke WebP
+  function optimizeImage(sourceInput, maxWidth = 600, quality = 0.75) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      
+      img.onload = function () {
+        let width = img.width;
+        let height = img.height;
+
+        // 1. Proses Resize (Menyesuaikan dimensi agar tidak terlalu besar)
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // 2. Kompresi & Konversi ke Format WebP (Lebih ringan dari PNG/JPEG)
+        // Parameter 'image/webp' dengan quality (0.75 = 75% kualitas visual, ukuran file kecil)
+        const compressedDataUrl = canvas.toDataURL('image/webp', quality);
+        resolve(compressedDataUrl);
+      };
+
+      img.onerror = function (err) {
+        reject(err);
+      };
+
+      // Memuat sumber gambar (bisa berupa elemen <video>, <canvas>, atau string DataURL file upload)
+      if (typeof sourceInput === 'string') {
+        img.src = sourceInput;
+      } else if (sourceInput instanceof HTMLVideoElement) {
+        // Jika dari tangkapan Webcam langsung
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = sourceInput.videoWidth || 640;
+        tempCanvas.height = sourceInput.videoHeight || 640;
+        tempCanvas.getContext('2d').drawImage(sourceInput, 0, 0, tempCanvas.width, tempCanvas.height);
+        img.src = tempCanvas.toDataURL('image/png');
+      }
+    });
+  }
   </script>
 </body>
 </html>
