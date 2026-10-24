@@ -388,15 +388,15 @@
 
               </div>
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="visit-purpose">Maksud / Keperluan Kunjungan Hari Ini *</label>
-                <textarea class="w-full p-space-md text-body-md text-on-surface bg-surface-container-low rounded-lg focus:outline-none focus:ring-2 focus:ring-[#775a19] focus:bg-surface-container-lowest transition-all" id="visit-purpose" placeholder="Contoh: Koordinasi data pemilih / penyerahan berkas berkas pemilu" rows="3"></textarea>
+                <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="maksud_kunjungan_berulang">Maksud / Keperluan Kunjungan Hari Ini *</label>
+                <textarea class="w-full p-space-md text-body-md text-on-surface bg-surface-container-low rounded-lg focus:outline-none focus:ring-2 focus:ring-[#775a19] focus:bg-surface-container-lowest transition-all" id="maksud_kunjungan_berulang" placeholder="Contoh: Koordinasi data pemilih / penyerahan berkas berkas pemilu" rows="3"></textarea>
               </div>
 
               <div class="pt-space-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-space-md">
                 <button class="nav-link px-space-lg py-3 rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg font-semibold hover:bg-surface-variant transition-colors text-center cursor-pointer" data-target="view-beranda" href="#beranda" type="button">
                   Batal / Periksa Ulang
                 </button>
-                <button id="btnConfirmRepeatVisit" class="nav-link btn-kpu-maroon px-space-xl py-3.5 rounded-lg font-headline-sm text-headline-sm font-bold shadow-lg transition-all flex items-center justify-center gap-space-sm cursor-pointer" type="button">
+                <button id="btnConfirmRepeatVisit" class="btn-kpu-maroon px-space-xl py-3.5 rounded-lg font-headline-sm text-headline-sm font-bold shadow-lg transition-all flex items-center justify-center gap-space-sm cursor-pointer" type="button">
                   <span class="material-symbols-outlined text-[24px]">how_to_reg</span>
                   <span>Konfirmasi Kunjungan Hari Ini</span>
                 </button>
@@ -1007,7 +1007,7 @@
 
   <!-- SCRIPT LOGIKA JAVASCRIPT -->
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwSQCOsN71hVxjXNsHgY7klV0wzvCwT2StlJQvBsaF5PS7Hz6b54vQPRe9myrLsTrB1/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzo1l-izA8kkg2ICl-Y1ZlXFb_arlPwvUTVZIThhtPGoQqFk7vbZmpyMeFNplAvZmMq/exec";
 
     let mediaStream = null;
     let capturedImageData = "";
@@ -1069,7 +1069,7 @@
         const phoneInput = document.getElementById('phone-input');
         const destBagian = document.getElementById('dest-bagian');
         const resultFoundSec = document.getElementById('result-found-section');
-        const visitPurpose = document.getElementById('visit-purpose');
+        const visitPurpose = document.getElementById('maksud_kunjungan_berulang');
 
         if (phoneInput) phoneInput.value = '';
         if (destBagian) destBagian.selectedIndex = 0;
@@ -1373,13 +1373,11 @@
         if (document.getElementById('existing-guest-name')) document.getElementById('existing-guest-name').textContent = data.nama_lengkap || "-";
         if (document.getElementById('existing-guest-org')) document.getElementById('existing-guest-org').textContent = data.instansi_asal || "-";
         
-        // Memperbarui hitungan total kunjungan dari database
         const countElem = document.getElementById('existing-guest-count');
         if (countElem) {
           countElem.textContent = (visitCount || 1) + " Kali";
         }
 
-        // Memperbarui foto profil tamu dari database
         const avatarIcon = document.getElementById('existing-guest-avatar-icon');
         const avatarImg = document.getElementById('existing-guest-avatar-img');
 
@@ -1387,7 +1385,7 @@
           avatarImg.src = data.foto;
           avatarImg.classList.remove('hidden');
           if (avatarIcon) avatarIcon.classList.add('hidden');
-          capturedImageData = data.foto; // Menggunakan foto terdaftar sebagai default
+          capturedImageData = data.foto;
         } else {
           if (avatarImg) avatarImg.classList.add('hidden');
           if (avatarIcon) avatarIcon.classList.remove('hidden');
@@ -1481,71 +1479,28 @@
 
       if (btnConfirmRepeatVisit) {
         btnConfirmRepeatVisit.addEventListener('click', async () => {
-       // Pastikan tidak ada deklarasi 'selectedDest' ganda di atas baris ini
-document.getElementById('btnConfirmRepeatVisit')?.addEventListener('click', async function() {
-  const selectedDest = document.getElementById('dest-bagian')?.value || "";
-  
-  if (!selectedDest) {
-    alert("Mohon pilih Bagian KPU yang dituju terlebih dahulu.");
-    return;
-  }
+          const selectedDest = document.getElementById('dest-bagian')?.value || "";
+          
+          if (!selectedDest) {
+            alert("Mohon pilih Bagian KPU yang dituju terlebih dahulu.");
+            return;
+          }
 
-  // Jika menggunakan kamera/foto pada kunjungan berulang, pastikan variabel foto terambil
-  // atau gunakan foto dari profil yang sudah ada di database jika tidak ambil foto baru.
-  const payload = {
-    nama_lengkap: currentVisitorData.nama_lengkap || "",
-    no_whatsapp: currentVisitorData.no_whatsapp || "",
-    instansi_asal: currentVisitorData.instansi_asal || "",
-    guest_category: currentVisitorData.guest_category || "eksternal", // Mempertahankan kategori asli dari database
-    unit_tujuan: selectedDest,
-    maksud_kunjungan: document.getElementById('maksud_kunjungan_berulang')?.value || "Kunjungan Berulang",
-    visitorCount: 1,
-    foto: capturedImageData || currentVisitorData.foto || ""
-  };
+          if (!activeGuestData) {
+            alert("Data tamu tidak ditemukan. Silakan ulangi pencarian nomor telepon.");
+            return;
+          }
 
-  // Indikator loading pada tombol
-  const btn = this;
-  const originalText = btn.innerHTML;
-  btn.innerHTML = "Menyimpan...";
-  btn.disabled = true;
-
-  try {
-    const response = await fetch(WEB_APP_URL, {
-      method: "POST",
-      mode: "no-cors", // Penting untuk bypass CORS pada Google Apps Script
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8",
-      },
-      body: JSON.stringify(payload)
-    });
-
-    alert("Check-in Kunjungan Berulang berhasil disimpan!");
-    // Reset atau arahkan kembali ke halaman utama / beranda
-    window.location.hash = "#beranda";
-    location.reload();
-  } catch (error) {
-    console.error("Gagal menyimpan kunjungan:", error);
-    alert("Terjadi kesalahan saat menyimpan data. Silakan coba lagi.");
-  } finally {
-    btn.innerHTML = originalText;
-    btn.disabled = false;
-  }
-});
-		}
-
-			const formData = {
-			  nama_lengkap: document.getElementById('nama_lengkap')?.value || "",
-			  no_whatsapp: noWa,
-			  instansi_asal: document.getElementById('instansi_asal')?.value || "",
-			  
-			  // Periksa apakah baris ini sudah ada untuk mengambil nilai dari radio button:
-			  guest_category: document.querySelector('input[name="guest_category"]:checked')?.value || "eksternal",
-			  
-			  unit_tujuan: document.getElementById('unit_tujuan')?.value || "",
-			  maksud_kunjungan: document.getElementById('maksud_kunjungan')?.value || "",
-			  visitorCount: currentCount,
-			  foto: capturedImageData
-			};
+          const formData = {
+            nama_lengkap: activeGuestData.nama_lengkap || "",
+            no_whatsapp: activeGuestData.no_whatsapp || "",
+            instansi_asal: activeGuestData.instansi_asal || "",
+            guest_category: activeGuestData.guest_category || "eksternal",
+            unit_tujuan: selectedDest,
+            maksud_kunjungan: document.getElementById('maksud_kunjungan_berulang')?.value || "Kunjungan Berulang",
+            visitorCount: repeatCount,
+            foto: capturedImageData || activeGuestData.foto || ""
+          };
 
           populateTicketProof(formData);
 
