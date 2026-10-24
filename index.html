@@ -1481,11 +1481,56 @@
 
       if (btnConfirmRepeatVisit) {
         btnConfirmRepeatVisit.addEventListener('click', async () => {
-          const selectedDest = document.getElementById('dest-bagian')?.value || "";
+       // Pastikan tidak ada deklarasi 'selectedDest' ganda di atas baris ini
+document.getElementById('btnConfirmRepeatVisit')?.addEventListener('click', async function() {
+  const selectedDest = document.getElementById('dest-bagian')?.value || "";
+  
+  if (!selectedDest) {
+    alert("Mohon pilih Bagian KPU yang dituju terlebih dahulu.");
+    return;
+  }
 
-		if (!selectedDest) {
-		  alert("Mohon pilih Bagian KPU yang dituju terlebih dahulu.");
-		  return;
+  // Jika menggunakan kamera/foto pada kunjungan berulang, pastikan variabel foto terambil
+  // atau gunakan foto dari profil yang sudah ada di database jika tidak ambil foto baru.
+  const payload = {
+    nama_lengkap: currentVisitorData.nama_lengkap || "",
+    no_whatsapp: currentVisitorData.no_whatsapp || "",
+    instansi_asal: currentVisitorData.instansi_asal || "",
+    guest_category: currentVisitorData.guest_category || "eksternal", // Mempertahankan kategori asli dari database
+    unit_tujuan: selectedDest,
+    maksud_kunjungan: document.getElementById('maksud_kunjungan_berulang')?.value || "Kunjungan Berulang",
+    visitorCount: 1,
+    foto: capturedImageData || currentVisitorData.foto || ""
+  };
+
+  // Indikator loading pada tombol
+  const btn = this;
+  const originalText = btn.innerHTML;
+  btn.innerHTML = "Menyimpan...";
+  btn.disabled = true;
+
+  try {
+    const response = await fetch(WEB_APP_URL, {
+      method: "POST",
+      mode: "no-cors", // Penting untuk bypass CORS pada Google Apps Script
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify(payload)
+    });
+
+    alert("Check-in Kunjungan Berulang berhasil disimpan!");
+    // Reset atau arahkan kembali ke halaman utama / beranda
+    window.location.hash = "#beranda";
+    location.reload();
+  } catch (error) {
+    console.error("Gagal menyimpan kunjungan:", error);
+    alert("Terjadi kesalahan saat menyimpan data. Silakan coba lagi.");
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+});
 		}
 
 			const formData = {
