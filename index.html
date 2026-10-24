@@ -1483,10 +1483,11 @@
         btnConfirmRepeatVisit.addEventListener('click', async () => {
           const selectedDest = document.getElementById('dest-bagian')?.value || "";
           
-          if (!selectedDest) {
-            alert("Mohon pilih Bagian KPU yang dituju terlebih dahulu.");
-            return;
-          }
+          const selectedDest = document.getElementById('dest-bagian')?.value || "";
+			if (!selectedDest) {
+			  alert("Mohon pilih Bagian KPU yang dituju terlebih dahulu.");
+			  return;
+			}
 
 			const formData = {
 			  nama_lengkap: document.getElementById('nama_lengkap')?.value || "",
