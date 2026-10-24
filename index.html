@@ -1006,7 +1006,7 @@
 
   <!-- SCRIPT LOGIKA JAVASCRIPT -->
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxWfZYtzOCKjVLqaEj8geUbTsDH2j7A1gBflq0YMW5lm4_IDg7KbPcLLm-zQ_uzBf_T/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwVxJ2AlnCWvm4_K_50wDuZnAAaNPAR1gRDyKdT-qhemSb-VIBbXIEzQ5exWQffD5kr/exec";
 
     let mediaStream = null;
     let capturedImageData = "";
@@ -1466,6 +1466,7 @@
               mode: "no-cors",
               body: JSON.stringify(formData)
             });
+            showToast('Berhasil!', 'Check-in kunjungan berulang berhasil dicatat.');
           } catch (err) {
             console.warn("Kirim data berulang:", err);
           } finally {
