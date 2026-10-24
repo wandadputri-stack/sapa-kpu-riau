@@ -113,7 +113,7 @@
               </div>
               <div class="flex flex-col">
                 <span class="font-label-md text-label-md text-[#ffdea5] uppercase tracking-wider">Kunjungan Aktif Hari Ini</span>
-                <span class="font-headline-sm text-headline-sm text-white font-bold">42 <span class="font-body-sm text-body-sm font-normal text-[#dae2fd]">Tamu Terdata</span></span>
+                <span class="font-headline-sm text-headline-sm text-white font-bold"><span id="home-daily-count">0</span> <span class="font-body-sm text-body-sm font-normal text-[#dae2fd]">Tamu Terdata</span></span>
               </div>
             </div>
             <div class="flex items-center gap-space-sm px-space-sm py-space-xs md:pl-6">
@@ -324,8 +324,9 @@
             <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md pb-space-md bg-surface-container-low p-space-md rounded-xl">
               <div class="flex items-start gap-space-md">
                 <div class="relative shrink-0">
-                  <div id="existing-guest-avatar" class="w-20 h-20 rounded-xl bg-[#3f0000] text-[#ffdea5] flex items-center justify-center shadow-md">
-                    <span class="material-symbols-outlined text-[40px]">person</span>
+                  <div id="existing-guest-avatar" class="w-20 h-20 rounded-xl bg-[#3f0000] text-[#ffdea5] flex items-center justify-center shadow-md overflow-hidden">
+                    <span class="material-symbols-outlined text-[40px]" id="existing-guest-avatar-icon">person</span>
+                    <img id="existing-guest-avatar-img" class="w-full h-full object-cover hidden" alt="Foto Tamu Database" src="">
                   </div>
                   <span class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full text-white flex items-center justify-center shadow text-[12px]" style="background-color: #775a19;"><span class="material-symbols-outlined text-[14px]">verified</span></span>
                 </div>
@@ -1006,7 +1007,7 @@
 
   <!-- SCRIPT LOGIKA JAVASCRIPT -->
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwVxJ2AlnCWvm4_K_50wDuZnAAaNPAR1gRDyKdT-qhemSb-VIBbXIEzQ5exWQffD5kr/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxQWQESsH4EVT7z_W-rSNfsYhLd9h1oGZzOsSUidOk2Dq1QjqMwAb3y6PJb5wjEh72b/exec";
 
     let mediaStream = null;
     let capturedImageData = "";
@@ -1018,6 +1019,24 @@
       
       const navLinks = document.querySelectorAll('.nav-link, header nav a');
       const views = document.querySelectorAll('.app-view');
+
+      // Memuat Statistik Kunjungan Harian untuk Beranda
+      async function fetchDailyStats() {
+        try {
+          const res = await fetch(`${WEB_APP_URL}?action=get_daily_stats`);
+          const json = await res.json();
+          if (json.status === "success" && json.todayCount !== undefined) {
+            const homeCountElem = document.getElementById('home-daily-count');
+            if (homeCountElem) {
+              homeCountElem.textContent = json.todayCount;
+            }
+          }
+        } catch (err) {
+          console.warn("Gagal mengambil statistik harian:", err);
+        }
+      }
+
+      fetchDailyStats();
 
       function resetAllForms() {
         const inputNama = document.getElementById('nama_lengkap');
@@ -1084,6 +1103,7 @@
       function switchView(targetId) {
         if (targetId === 'view-beranda') {
           resetAllForms();
+          fetchDailyStats();
         }
 
         views.forEach(view => {
@@ -1324,7 +1344,7 @@
 
             if (result.found) {
               activeGuestData = result.data;
-              updateRepeatGuestUI(result.data);
+              updateRepeatGuestUI(result.data, result.visitCount);
               if (resultFoundSec) resultFoundSec.classList.remove('hidden');
             } else {
               const searchedDisp = document.getElementById('searchedNumberDisplay');
@@ -1347,10 +1367,31 @@
         });
       }
 
-      function updateRepeatGuestUI(data) {
+      // Pembaruan UI Tamu Berulang dengan Hitungan Kunjungan & Foto dari Database
+      function updateRepeatGuestUI(data, visitCount) {
         if (!data) return;
         if (document.getElementById('existing-guest-name')) document.getElementById('existing-guest-name').textContent = data.nama_lengkap || "-";
         if (document.getElementById('existing-guest-org')) document.getElementById('existing-guest-org').textContent = data.instansi_asal || "-";
+        
+        // Memperbarui hitungan total kunjungan dari database
+        const countElem = document.getElementById('existing-guest-count');
+        if (countElem) {
+          countElem.textContent = (visitCount || 1) + " Kali";
+        }
+
+        // Memperbarui foto profil tamu dari database
+        const avatarIcon = document.getElementById('existing-guest-avatar-icon');
+        const avatarImg = document.getElementById('existing-guest-avatar-img');
+
+        if (data.foto && data.foto.startsWith('data:image/') && avatarImg) {
+          avatarImg.src = data.foto;
+          avatarImg.classList.remove('hidden');
+          if (avatarIcon) avatarIcon.classList.add('hidden');
+          capturedImageData = data.foto; // Menggunakan foto terdaftar sebagai default
+        } else {
+          if (avatarImg) avatarImg.classList.add('hidden');
+          if (avatarIcon) avatarIcon.classList.remove('hidden');
+        }
       }
 
       keypadBtns.forEach(btn => {
@@ -1428,6 +1469,7 @@
               body: JSON.stringify(formData)
             });
             showToast('Berhasil!', 'Data kunjungan tersimpan di Google Sheets KPU Riau.');
+            fetchDailyStats();
           } catch (error) {
             console.warn("Gagal terhubung ke GAS:", error);
           } finally {
@@ -1467,6 +1509,7 @@
               body: JSON.stringify(formData)
             });
             showToast('Berhasil!', 'Check-in kunjungan berulang berhasil dicatat.');
+            fetchDailyStats();
           } catch (err) {
             console.warn("Kirim data berulang:", err);
           } finally {
