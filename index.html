@@ -1488,16 +1488,19 @@
             return;
           }
 
-          const formData = {
-            nama_lengkap: document.getElementById('existing-guest-name')?.textContent || "Tamu Berulang",
-            no_whatsapp: phoneInput?.value || "-",
-            instansi_asal: document.getElementById('existing-guest-org')?.textContent || "-",
-            guest_category: "eksternal",
-            unit_tujuan: selectedDest,
-            maksud_kunjungan: document.getElementById('visit-purpose')?.value || "-",
-            visitorCount: repeatCount,
-            foto: capturedImageData
-          };
+			const formData = {
+			  nama_lengkap: document.getElementById('nama_lengkap')?.value || "",
+			  no_whatsapp: noWa,
+			  instansi_asal: document.getElementById('instansi_asal')?.value || "",
+			  
+			  // Periksa apakah baris ini sudah ada untuk mengambil nilai dari radio button:
+			  guest_category: document.querySelector('input[name="guest_category"]:checked')?.value || "eksternal",
+			  
+			  unit_tujuan: document.getElementById('unit_tujuan')?.value || "",
+			  maksud_kunjungan: document.getElementById('maksud_kunjungan')?.value || "",
+			  visitorCount: currentCount,
+			  foto: capturedImageData
+			};
 
           populateTicketProof(formData);
 
