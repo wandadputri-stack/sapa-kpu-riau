@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="web_standard" name="shell-type">
+  <base target="_top">
+  <title>Buku Tamu Digital - KPU Provinsi Riau</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main>:first-child { margin-top: 0 !important; }
+      main>:last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+
+    .btn-kpu-maroon {
+      background-color: #3f0000 !important;
+      color: #ffffff !important;
+    }
+    .btn-kpu-gold {
+      background-color: #fed488 !important;
+      color: #785a1a !important;
+    }
+    .btn-kpu-brown {
+      background-color: #775a19 !important;
+      color: #ffffff !important;
+    }
+    .btn-kpu-maroon *, .btn-kpu-brown * {
+      color: #ffffff !important;
+    }
+    .btn-kpu-gold * {
+      color: #785a1a !important;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-spin-custom {
+      animation: spin 1s linear infinite;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = { 
+      darkMode: "class", 
+      theme: { 
+        extend: { 
+          "colors": { "on-primary-container": "#f66b58", "on-tertiary-container": "#ff6450", "outline-variant": "#e0bfba", "on-primary-fixed-variant": "#891c12", "tertiary-fixed": "#ffdad4", "inverse-on-surface": "#eef0ff", "on-background": "#131b2e", "on-surface": "#131b2e", "surface-container": "#eaedff", "primary-fixed-dim": "#ffb4a8", "on-primary-fixed": "#410000", "tertiary-fixed-dim": "#ffb4a8", "on-tertiary": "#ffffff", "secondary-fixed-dim": "#e9c176", "outline": "#8c716d", "error-container": "#ffdad6", "surface-container-low": "#f2f3ff", "on-primary": "#ffffff", "surface-bright": "#faf8ff", "on-tertiary-fixed-variant": "#8f0f07", "on-secondary-fixed-variant": "#5d4201", "primary": "#3f0000", "tertiary": "#3f0000", "primary-container": "#670000", "surface-variant": "#dae2fd", "on-error-container": "#93000a", "surface-dim": "#d2d9f4", "surface-container-highest": "#dae2fd", "surface-container-high": "#e2e7ff", "error": "#ba1a1a", "secondary-container": "#fed488", "on-secondary-fixed": "#261900", "on-error": "#ffffff", "inverse-surface": "#283044", "surface": "#faf8ff", "background": "#faf8ff", "secondary-fixed": "#ffdea5", "secondary": "#775a19", "on-surface-variant": "#58413e", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff", "inverse-primary": "#ffb4a8", "on-tertiary-fixed": "#410000", "surface-tint": "#ab3527", "on-secondary-container": "#785a1a", "primary-fixed": "#ffdad4", "tertiary-container": "#670000" }, 
+          "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, 
+          "spacing": { "margin-mobile": "1rem", "gutter": "1.5rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-xs": "0.25rem", "gutter-kiosk": "2rem", "margin": "2rem", "space-sm": "0.5rem", "space-md": "1rem" }, 
+          "fontFamily": { "body-md": [ "Inter" ], "title-md": [ "Inter" ], "badge-code": [ "JetBrains Mono" ], "headline-sm": [ "Plus Jakarta Sans" ], "headline-lg": [ "Plus Jakarta Sans" ], "display-lg-mobile": [ "Plus Jakarta Sans" ], "display-lg": [ "Plus Jakarta Sans" ], "tabular-time": [ "JetBrains Mono" ], "body-sm": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "label-lg": [ "Inter" ] }, 
+          "fontSize": { "body-md": [ "14px", { "lineHeight": "22px", "fontWeight": "400" } ], "title-md": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "badge-code": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "display-lg-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" } ], "display-lg": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "tabular-time": [ "22px", { "lineHeight": "28px", "letterSpacing": "0.04em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "18px", "fontWeight": "400" } ], "headline-md": [ "24px", { "lineHeight": "32px", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "26px", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ] } 
+        } 
+      } 
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+  
+  <header class="fixed top-0 w-full z-50 shadow-[0_4px_20px_rgba(63,0,0,0.18)]" style="background-color: #670000;">
+    <div class="min-h-20 py-space-xs w-full px-margin flex flex-wrap items-center justify-between gap-space-sm md:gap-gutter">
+      <div class="flex items-center gap-space-md">
+        <img alt="Logo KPU Provinsi Riau" class="h-8 w-auto object-contain" src="https://www.kpu.go.id/images/1627539868logo-kpu.png">
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-headline-sm text-white tracking-tight leading-tight">SAPA KPU RIAU</span>
+          <span class="font-body-sm text-body-sm opacity-90" style="color: #ffdea5;">Sistem Administrasi Pelayanan Tamu — Komisi Pemilihan Umum Provinsi Riau</span>
+        </div>
+      </div>
+      <div class="hidden xl:flex items-center gap-space-sm px-space-md py-space-xs rounded-lg font-tabular-time text-body-md" style="background-color: rgba(63,0,0,0.8); color: #ffdea5;">
+        <span class="material-symbols-outlined text-body-lg">schedule</span>
+        <span class="live-clock-text">--</span>
+      </div>
+    </div>
+    <nav class="px-margin flex items-center gap-space-sm min-h-12 py-space-xs overflow-x-auto shadow-[0_1px_8px_rgba(0,0,0,0.04)]" id="main-nav" style="background-color: #3f0000;">
+      <a class="nav-link px-space-md py-space-xs transition-all font-semibold rounded-lg cursor-pointer" data-target="view-beranda" href="#beranda" style="background-color: #fed488; color: #785a1a;">Beranda</a>
+      <a class="nav-link px-space-md py-space-xs text-white hover:bg-[#670000] transition-all font-label-lg text-label-lg rounded-lg cursor-pointer" data-target="view-cari-tamu-lama" href="#cari-tamu-lama">Kunjungan Berulang</a>
+      <a class="nav-link px-space-md py-space-xs text-white hover:bg-[#670000] transition-all font-label-lg text-label-lg rounded-lg cursor-pointer" data-target="view-registrasi-tamu-baru" href="#registrasi-tamu-baru">Pendaftaran Kunjungan Baru</a>
+      <a class="nav-link px-space-md py-space-xs text-white hover:bg-[#670000] transition-all font-label-lg text-label-lg rounded-lg hidden cursor-pointer" data-target="view-konfirmasi-dan-survei" href="#konfirmasi-dan-survei">Konfirmasi &amp; Survei</a>
+    </nav>
+  </header>
+
+  <main class="w-full pt-32 bg-surface min-h-screen">
+
+    <!-- VIEW 1: BERANDA -->
+    <div id="view-beranda" class="app-view flex flex-col w-full">
+      <div class="relative w-full overflow-hidden bg-cover bg-center -mt-32 pt-36 pb-16 md:pb-20 px-margin" style="background-image: url('https://www.isbcenter.com/wp-content/uploads/2023/03/KPU-1.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#3f0000]/95 via-[#670000]/85 to-[#131b2e]/90 backdrop-blur-[2px]"></div>
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-[#775a19]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-[#f66b58]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative max-w-6xl mx-auto flex flex-col items-center text-center">
+          <div class="inline-flex items-center gap-space-sm bg-white/15 backdrop-blur-md px-space-md py-space-xs rounded-full shadow-md mb-space-md">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#ffdea5] animate-ping"></span>
+            <span class="w-2 h-2 rounded-full bg-[#775a19] -ml-4"></span>
+            <span class="font-label-lg text-label-lg text-[#ffdea5] tracking-wide uppercase">Digital Visitor Logbook</span>
+          </div>
+          <h1 class="font-headline-lg text-headline-md md:text-display-lg text-white max-w-4xl tracking-tight leading-tight">Selamat Datang di <span class="text-[#ffdea5] font-bold drop-shadow-md inline-block">SAPA KPU RIAU</span></h1>
+          <p class="font-headline-sm text-headline-sm text-[#fed488] mt-space-xs font-semibold">Komisi Pemilihan Umum Provinsi Riau</p>
+          <p class="font-body-lg text-body-lg text-[#dae2fd] max-w-3xl mt-space-sm opacity-95">Layanan administrasi dan penerimaan tamu resmi Komisi Pemilihan Umum Provinsi Riau.</p>
+          
+          <div class="w-full max-w-5xl mt-space-lg bg-white/10 backdrop-blur-md rounded-xl p-space-md shadow-xl grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20 gap-y-4 md:gap-y-0 text-left items-center">
+            <div class="flex items-center gap-space-sm px-space-sm py-space-xs">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background-color: #fed488; color: #785a1a;">
+                <span class="material-symbols-outlined text-headline-sm">groups</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-[#ffdea5] uppercase tracking-wider">Kunjungan Aktif Hari Ini</span>
+                <span class="font-headline-sm text-headline-sm text-white font-bold">42 <span class="font-body-sm text-body-sm font-normal text-[#dae2fd]">Tamu Terdata</span></span>
+              </div>
+            </div>
+            <div class="flex items-center gap-space-sm px-space-sm py-space-xs md:pl-6">
+              <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center text-[#ffdea5] shrink-0">
+                <span class="material-symbols-outlined text-headline-sm">meeting_room</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-[#ffdea5] uppercase tracking-wider">Pelayanan Informasi &amp; Kunjungan</span>
+                <span class="font-title-md text-title-md text-white font-semibold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#ffdea5] inline-block"></span> KPU Melayani</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-space-sm px-space-sm py-space-xs md:pl-6">
+              <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center text-[#ffdea5] shrink-0">
+                <span class="material-symbols-outlined text-headline-sm">timer</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-[#ffdea5] uppercase tracking-wider">Jam Layanan Kantor</span>
+                <div class="flex flex-col text-white font-semibold text-body-sm leading-tight mt-0.5">
+                  <span>Senin – Kamis : 07.30 – 16.00 WIB</span>
+                  <span class="text-[#ffdea5] opacity-95 text-xs font-normal mt-0.5">Jumat : 07.30 – 16.30 WIB</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full max-w-6xl mx-auto px-margin -mt-10 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-stretch">
+          <div class="group relative bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+            <div class="h-2 w-full bg-[#670000]"></div>
+            <div class="p-space-lg flex flex-col h-full justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-space-md">
+                  <span class="inline-flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-[#ffdad4] text-[#891c12] font-label-md text-label-md font-semibold">
+                    <span class="material-symbols-outlined text-body-md">person_add</span> Pendaftaran Pertama Kali
+                  </span>
+                  <span class="font-badge-code text-badge-code text-[#775a19] font-bold">KUNJUNGAN PERTAMA</span>
+                </div>
+                <div class="flex items-start gap-space-md mb-space-md">
+                  <div class="w-16 h-16 rounded-xl bg-[#670000]/10 text-[#670000] flex items-center justify-center flex-shrink-0 group-hover:bg-[#670000] group-hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-display-lg-mobile">assignment_ind</span>
+                  </div>
+                  <div class="flex flex-col"><h2 class="font-headline-md text-headline-md text-[#3f0000]">Pendaftaran Kunjungan Baru</h2><p class="font-body-sm text-body-sm text-[#775a19] font-medium mt-0.5">Pengunjung Pertama Kali / Belum Terdaftar</p></div>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Bagi tamu yang belum pernah terdaftar. Isi data diri dan tentukan tujuan kunjungan.</p>
+                <div class="mt-space-md grid grid-cols-2 gap-space-xs text-on-surface-variant bg-surface-container-low rounded-lg p-space-sm">
+                  <div class="flex items-center gap-1.5 text-body-sm font-body-sm"><span class="material-symbols-outlined text-[#670000] text-body-md">check_circle</span> Identitas Diri &amp; Instansi</div>
+                  <div class="flex items-center gap-1.5 text-body-sm font-body-sm"><span class="material-symbols-outlined text-[#670000] text-body-md">check_circle</span> Foto Verifikasi Wajah</div>
+                  <div class="flex items-center gap-1.5 text-body-sm font-body-sm col-span-2"><span class="material-symbols-outlined text-[#670000] text-body-md">check_circle</span> Survei Kepuasan Layanan</div>
+                </div>
+              </div>
+              <div class="mt-space-lg pt-space-md">
+                <a class="nav-link btn-kpu-maroon w-full inline-flex items-center justify-center gap-space-sm px-space-lg py-space-md rounded-lg font-title-md text-title-md shadow-md hover:shadow-lg transition-all text-center cursor-pointer font-bold" data-target="view-registrasi-tamu-baru" href="#registrasi-tamu-baru">
+                  <span>Mulai Kunjungan Baru</span>
+                  <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="group relative bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+            <div class="h-2 w-full bg-[#fed488]"></div>
+            <div class="p-space-lg flex flex-col h-full justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-space-md">
+                  <span class="inline-flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-[#ffdea5] text-[#5d4201] font-label-md text-label-md font-semibold"><span class="material-symbols-outlined text-body-md">bolt</span> Check-in Cepat</span>
+                  <span class="font-badge-code text-badge-code text-[#775a19] font-bold">KUNJUNGAN BERULANG</span>
+                </div>
+                <div class="flex items-start gap-space-md mb-space-md">
+                  <div class="w-16 h-16 rounded-xl bg-[#fed488]/30 text-[#775a19] flex items-center justify-center flex-shrink-0 group-hover:bg-[#fed488] group-hover:text-[#785a1a] transition-colors">
+                    <span class="material-symbols-outlined text-display-lg-mobile">quick_reference_all</span>
+                  </div>
+                  <div class="flex flex-col"><h2 class="font-headline-md text-headline-md text-on-surface">Check-in Kunjungan Berulang</h2><p class="font-body-sm text-body-sm text-[#775a19] font-medium mt-0.5">Verifikasi Nomor Kontak bagi Tamu yang Pernah Berkunjung</p></div>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Bagi tamu yang pernah berkunjung. Masukkan nomor kontak untuk verifikasi cepat.</p>
+                <div class="mt-space-md bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-space-xs">
+                  <div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[#775a19] text-body-md">contact_phone</span> Nomor Ponsel Terdaftar</span><span class="font-mono text-[#775a19] font-bold">08xx-xxxx-xxxx</span></div>
+                  <div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[#775a19] text-body-md">history</span> Otomatis Muat Profil</span><span class="text-[#775a19] font-semibold">Instan</span></div>
+                  <div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[#775a19] text-body-md">done_all</span> Verifikasi Tanpa Antre</span><span class="text-[#775a19] font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-body-md">check</span> Cepat</span></div>
+                </div>
+              </div>
+              <div class="mt-space-lg pt-space-md">
+                <a class="nav-link btn-kpu-gold w-full inline-flex items-center justify-center gap-space-sm px-space-lg py-space-md rounded-lg font-title-md text-title-md shadow-md hover:shadow-lg transition-all text-center cursor-pointer font-bold" data-target="view-cari-tamu-lama" href="#cari-tamu-lama">
+                  <span>Check-in Kunjungan Berulang ⚡</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full max-w-6xl mx-auto px-margin py-space-xl pb-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm mb-space-lg">
+          <div class="flex flex-col">
+            <span class="font-label-md text-label-md text-[#775a19] font-bold uppercase tracking-wider">Prosedur Kunjungan Pelayanan</span>
+            <h3 class="font-headline-md text-headline-md text-[#3f0000] mt-1">Alur Kunjungan Tamu di KPU Riau</h3>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-md relative overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between mb-space-md">
+              <div class="w-10 h-10 rounded-full bg-[#670000] text-white flex items-center justify-center font-bold text-headline-sm">1</div>
+              <span class="material-symbols-outlined text-[#775a19] text-headline-sm">badge</span>
+            </div>
+            <h4 class="font-title-md text-title-md text-on-surface font-bold">Identifikasi Diri</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">Pilih pendaftaran baru atau masukkan nomor ponsel untuk verifikasi.</p>
+          </div>
+          <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-md relative overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between mb-space-md">
+              <div class="w-10 h-10 rounded-full bg-[#3f0000] text-white flex items-center justify-center font-bold text-headline-sm">2</div>
+              <span class="material-symbols-outlined text-[#775a19] text-headline-sm">add_a_photo</span>
+            </div>
+            <h4 class="font-title-md text-title-md text-on-surface font-bold">Konfirmasi &amp; Foto</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">Tentukan bagian yang dituju, isi keperluan, dan ambil foto wajah.</p>
+          </div>
+          <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-md relative overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between mb-space-md">
+              <div class="w-10 h-10 rounded-full bg-[#775a19] text-white flex items-center justify-center font-bold text-headline-sm">3</div>
+              <span class="material-symbols-outlined text-[#775a19] text-headline-sm">rate_review</span>
+            </div>
+            <h4 class="font-title-md text-title-md text-on-surface font-bold">Pelayanan &amp; Survei Kepuasan</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">Tunggu panggilan di area lobi, lalu isi survei kepuasan setelah kunjungan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: CARI TAMU LAMA -->
+    <div id="view-cari-tamu-lama" class="app-view flex flex-col w-full hidden">
+      <div class="relative w-full overflow-hidden py-space-xl px-margin text-white" style="background-color: #3f0000;">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#fed488 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
+        <div class="absolute -right-20 -top-24 w-96 h-96 rounded-full bg-[#670000] blur-3xl opacity-60 pointer-events-none"></div>
+        <div class="absolute -left-20 bottom-0 w-80 h-80 rounded-full bg-[#775a19]/30 blur-2xl opacity-40 pointer-events-none"></div>
+        <div class="relative max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-space-lg">
+          <div class="flex flex-col gap-space-xs max-w-3xl">
+            <div class="flex items-center gap-space-sm mb-1">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fed488] text-[#785a1a] font-label-md text-label-md font-semibold tracking-wide shadow-sm"><span class="material-symbols-outlined text-[16px]">verified</span> SAPA KPU RIAU • CHECK-IN CEPAT</span>
+            </div>
+            <h1 class="font-display-lg text-display-lg text-white tracking-tight font-extrabold">Check-in Kunjungan Berulang</h1>
+            <p class="font-body-lg text-body-lg text-[#dae2fd] font-normal leading-relaxed">Masukkan nomor ponsel/WhatsApp terdaftar untuk konfirmasi kunjungan Anda.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full px-margin py-space-xl max-w-4xl mx-auto flex flex-col gap-space-xl">
+        <div class="flex flex-col gap-space-lg w-full">
+          
+          <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col gap-space-md relative overflow-hidden">
+            <div class="flex items-center justify-between pb-space-sm">
+              <div class="flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-[#775a19] text-headline-sm">phone_iphone</span>
+                <span class="font-title-md text-title-md text-[#3f0000] font-bold">Pencarian Nomor Telepon Terdaftar</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-space-xs">
+              <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="phone-input">Nomor Ponsel / WhatsApp (10-14 Karakter)</label>
+              <div class="flex items-stretch gap-space-xs w-full flex-wrap">
+                <div class="relative flex-1">
+                  <span class="material-symbols-outlined absolute left-3.5 top-3.5 text-[#775a19] text-[22px] pointer-events-none">call</span>
+                  <input class="w-full pl-12 pr-space-md py-3 text-title-md font-headline-sm font-semibold text-[#3f0000] bg-surface-container-low rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-[#775a19] transition-all shadow-inner" 
+                         id="phone-input" 
+                         placeholder="081275618899" 
+                         type="tel" 
+                         minlength="10" 
+                         maxlength="14">
+                </div>
+                <button class="btn-kpu-maroon px-space-lg font-title-md font-bold rounded-lg shadow-md transition-all flex items-center gap-space-xs shrink-0 cursor-pointer" id="btn-search-trigger" type="button">
+                  <span class="material-symbols-outlined text-body-lg" id="search-icon">search</span>
+                  <span id="search-btn-text">Cari &amp; Verifikasi Data</span>
+                </button>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[16px] text-[#775a19]">info</span> Masukkan 10-14 digit nomor WhatsApp terdaftar untuk verifikasi otomatis.</p>
+            </div>
+          </div>
+          
+          <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col gap-space-md border border-[#ffdea5]/20">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-[#775a19] text-headline-sm">touch_app</span>
+                <span class="font-title-md text-title-md text-[#3f0000] font-bold">Keypad Sentuh Kios Mandiri</span>
+              </div>
+              <span class="font-label-md text-label-md text-[#785a1a] bg-[#fed488] px-space-sm py-0.5 rounded-full font-medium">Input Layar Sentuh</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Sentuh tombol angka di bawah untuk memasukkan nomor telepon secara cepat pada layar monitor lobi:</p>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">1</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">2</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">3</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">4</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">5</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">6</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">7</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">8</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">9</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">-</button>
+              <button type="button" class="keypad-btn py-3.5 bg-surface-container-low hover:bg-[#fed488] hover:text-[#785a1a] text-[#3f0000] font-headline-md text-headline-md font-bold rounded-xl border border-[#ffdea5]/20 shadow-sm transition-all cursor-pointer flex items-center justify-center">0</button>
+              <button type="button" id="keypad-clear" class="py-3.5 bg-[#ffdad6] hover:bg-red-200 text-[#ba1a1a] font-title-md text-title-md font-bold rounded-xl border border-[#e0bfba] shadow-sm transition-all cursor-pointer flex items-center justify-center gap-1">
+                <span class="material-symbols-outlined text-[20px]">backspace</span>
+                <span class="font-bold">Hapus</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col gap-space-lg hidden" id="result-found-section">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md pb-space-md bg-surface-container-low p-space-md rounded-xl">
+              <div class="flex items-start gap-space-md">
+                <div class="relative shrink-0">
+                  <div id="existing-guest-avatar" class="w-20 h-20 rounded-xl bg-[#3f0000] text-[#ffdea5] flex items-center justify-center shadow-md">
+                    <span class="material-symbols-outlined text-[40px]">person</span>
+                  </div>
+                  <span class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full text-white flex items-center justify-center shadow text-[12px]" style="background-color: #775a19;"><span class="material-symbols-outlined text-[14px]">verified</span></span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-space-xs">
+                    <span class="font-label-md text-label-md px-2 py-0.5 rounded text-white font-semibold" style="background-color: #3f0000;">TERVERIFIKASI</span>
+                    <span class="font-label-md text-label-md px-2 py-0.5 rounded font-medium" style="background-color: #fed488; color: #785a1a;">Kunjungan Berulang</span>
+                  </div>
+                  <h3 id="existing-guest-name" class="font-headline-md text-headline-md font-bold leading-snug" style="color: #3f0000;">Nama Tamu Terverifikasi</h3>
+                  <span id="existing-guest-org" class="font-title-md text-title-md font-semibold leading-normal" style="color: #775a19;">Instansi / Asal Tamu</span>
+                  <span id="existing-guest-role" class="font-body-sm text-body-sm text-on-surface-variant">Status: Pengunjung Terdaftar KPU Riau</span>
+                </div>
+              </div>
+              <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between w-full lg:w-auto pt-2 lg:pt-0 border-t lg:border-t-0 border-[#8c716d]/40">
+                <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Arsip Terverifikasi</span>
+                <span id="existing-guest-count" class="font-headline-sm text-headline-sm font-bold" style="color: #3f0000;">1 Kali</span>
+                <span id="existing-guest-cat" class="font-label-md text-label-md px-2 py-0.5 rounded font-medium mt-1" style="background-color: #fed488; color: #785a1a;">Kategori: Tamu Terdaftar</span>
+              </div>
+            </div>
+
+            <form class="flex flex-col gap-space-md pt-space-xs" onsubmit="event.preventDefault();">
+              <div class="flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-headline-sm" style="color: #775a19;">edit_calendar</span>
+                <span class="font-title-md text-title-md font-bold" style="color: #3f0000;">Lengkapi Data Kunjungan Hari Ini</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+                
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="dest-bagian">Tujuan Kunjungan Hari Ini *</label>
+                  <div class="relative">
+                    <select class="w-full h-12 pl-space-md pr-10 text-body-md font-medium text-on-surface bg-surface-container-low rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-[#775a19] focus:bg-surface-container-lowest transition-all" id="dest-bagian">
+                      <option disabled selected value="">Pilih Bagian KPU yang Dituju...</option>
+                      <option value="1. Sekretaris">Sekretaris</option>
+                      <option value="2. Komisioner">Komisioner</option>
+                      <option value="3. Bagian Keuangan, Umum dan Logistik">Bagian Keuangan, Umum, dan Logistik</option>
+                      <option value="4. Bagian Partisipasi, Humas dan Organisasi">Bagian Partisipasi, Humas dan Organisasi</option>
+                      <option value="5. Bagian Teknis Penyelenggaraan Pemilu dan Hukum">Bagian Teknis Penyelenggaraan Pemilu dan Hukum</option>
+                      <option value="6. Bagian Perencanaan, Data dan Informasi">Bagian Perencanaan, Data dan Informasi</option>
+                      <option value="7. Meja Layanan PPID / Informasi Publik">Meja Layanan PPID / Informasi Publik</option>
+                      <option value="8. Lainnya">Lainnya</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-3 top-3 text-[#775a19] pointer-events-none">expand_more</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold">Jumlah Rombongan Tamu</label>
+                  <div class="flex items-center h-12 bg-surface-container-low rounded-lg p-1">
+                    <button type="button" id="btnRepeatDecrement" class="w-10 h-10 rounded-md bg-[#dae2fd] flex items-center justify-center hover:bg-[#775a19] hover:text-white transition-all cursor-pointer" style="color: #3f0000;">
+                      <span class="material-symbols-outlined text-[18px]">remove</span>
+                    </button>
+                    <div class="flex-1 text-center font-headline-sm text-headline-sm font-bold" id="repeatVisitorCount" style="color: #3f0000;">0</div>
+                    <button type="button" id="btnRepeatIncrement" class="w-10 h-10 rounded-md bg-[#dae2fd] flex items-center justify-center hover:bg-[#775a19] hover:text-white transition-all cursor-pointer" style="color: #3f0000;">
+                      <span class="material-symbols-outlined text-[18px]">add</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="visit-purpose">Maksud / Keperluan Kunjungan Hari Ini *</label>
+                <textarea class="w-full p-space-md text-body-md text-on-surface bg-surface-container-low rounded-lg focus:outline-none focus:ring-2 focus:ring-[#775a19] focus:bg-surface-container-lowest transition-all" id="visit-purpose" placeholder="Contoh: Koordinasi data pemilih / penyerahan berkas berkas pemilu" rows="3"></textarea>
+              </div>
+
+              <div class="pt-space-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-space-md">
+                <button class="nav-link px-space-lg py-3 rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg font-semibold hover:bg-surface-variant transition-colors text-center cursor-pointer" data-target="view-beranda" href="#beranda" type="button">
+                  Batal / Periksa Ulang
+                </button>
+                <button id="btnConfirmRepeatVisit" class="nav-link btn-kpu-maroon px-space-xl py-3.5 rounded-lg font-headline-sm text-headline-sm font-bold shadow-lg transition-all flex items-center justify-center gap-space-sm cursor-pointer" type="button">
+                  <span class="material-symbols-outlined text-[24px]">how_to_reg</span>
+                  <span>Konfirmasi Kunjungan Hari Ini</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="w-full bg-surface-container rounded-xl p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md shadow-sm">
+          <div class="flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shadow shrink-0" style="background-color: #3f0000; color: #ffffff;">
+              <span class="material-symbols-outlined text-headline-sm" style="color: #ffdea5;">arrow_back</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-title-md text-title-md font-bold" style="color: #3f0000;">Kunjungan Baru (Pertama Kali)?</span>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Jika ini pertama kalinya Anda mengunjungi kantor KPU Provinsi Riau, daftarkan data diri baru secara mandiri.</p>
+            </div>
+          </div>
+          <a class="nav-link btn-kpu-brown w-full md:w-auto px-6 py-3.5 rounded-lg font-title-md text-title-md font-bold text-center shadow-md shrink-0 cursor-pointer border border-[#ffdea5]/40 flex items-center justify-center gap-2" 
+             data-target="view-registrasi-tamu-baru" 
+             href="#registrasi-tamu-baru">
+            <span>Kunjungan Baru (Pertama Kali) →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: FORMULIR PENDAFTARAN TAMU BARU -->
+    <div id="view-registrasi-tamu-baru" class="app-view flex flex-col w-full relative hidden">
+      <div class="absolute inset-0 pointer-events-none opacity-[0.035] overflow-hidden">
+        <div class="w-full h-full bg-cover bg-center"></div>
+      </div>
+      <div class="relative w-full max-w-7xl mx-auto px-4 md:px-8 py-6 flex flex-col gap-8">
+        <div class="bg-surface-container-lowest shadow-md rounded-xl p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl text-white flex items-center justify-center shadow-md" style="background-color: #670000;">
+              <span class="material-symbols-outlined text-[28px]">how_to_reg</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-headline-sm text-headline-sm tracking-tight" style="color: #3f0000;">Formulir Pendaftaran Kunjungan Baru</span>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Registrasi Pengunjung Pertama Kali</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 self-stretch md:self-auto bg-surface-container-low px-4 py-2 rounded-xl flex-wrap">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full text-white text-body-sm font-label-lg flex items-center justify-center font-bold" style="background-color: #3f0000;">1</span>
+              <span class="font-label-lg text-label-lg hidden lg:inline" style="color: #3f0000;">Identitas Kunjungan</span>
+            </div>
+            <div class="w-6 h-0.5 bg-[#8c716d]/30"></div>
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full text-body-sm font-label-lg flex items-center justify-center font-bold" style="background-color: #fed488; color: #785a1a;">2</span>
+              <span class="font-label-lg text-label-lg hidden lg:inline" style="color: #775a19;">Verifikasi Wajah</span>
+            </div>
+            <div class="w-6 h-0.5 bg-[#8c716d]/30"></div>
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full bg-[#dae2fd] text-on-surface-variant text-body-sm font-label-lg flex items-center justify-center font-bold">3</span>
+              <span class="font-label-lg text-label-lg text-on-surface-variant hidden lg:inline">Konfirmasi &amp; Survei</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7 flex flex-col gap-6">
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <span class="font-label-lg text-label-lg uppercase tracking-wider" style="color: #775a19;">Kategori Pengunjung</span>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">*Wajib Dipilih</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="guestTypeSelector">
+                <label class="cursor-pointer relative p-4 rounded-xl transition-all flex items-start gap-3 bg-surface-container-low hover:bg-surface-container group">
+                  <input checked="" class="mt-1 focus:ring-0 focus:outline-none h-4 w-4" name="guest_category" type="radio" value="eksternal" style="accent-color: #3f0000;">
+                  <div class="flex flex-col">
+                    <span class="font-title-md text-title-md font-semibold" style="color: #3f0000;">Tamu Eksternal</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Bawaslu, Partai Politik, Instansi Pemerintah, Ormas, Akademisi, Media &amp; Masyarakat</span>
+                  </div>
+                </label>
+                <label class="cursor-pointer relative p-4 rounded-xl transition-all flex items-start gap-3 bg-surface-container-low hover:bg-surface-container group">
+                  <input class="mt-1 focus:ring-0 focus:outline-none h-4 w-4" name="guest_category" type="radio" value="internal" style="accent-color: #3f0000;">
+                  <div class="flex flex-col">
+                    <span class="font-title-md text-title-md font-semibold" style="color: #3f0000;">Tamu Internal</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">KPU RI, KPU Provinsi/Kabupaten/Kota</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-5">
+              <div class="flex items-center gap-2 pb-2" style="color: #3f0000;">
+                <span class="material-symbols-outlined text-[22px]">badge</span>
+                <span class="font-headline-sm text-headline-sm">Data Identitas Tamu</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="sm:col-span-2 flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center justify-between" for="nama_lengkap">
+                    <span>Nama Lengkap <span style="color: #ba1a1a;">*</span></span>
+                  </label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-3.5 text-[#8c716d] text-[20px]">person</span>
+                    <input class="w-full pl-11 pr-4 py-3 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all placeholder:text-[#8c716d]/60 placeholder:font-normal" id="nama_lengkap" placeholder="Contoh: Muhammad Ramadhan, S.IP" type="text">
+                  </div>
+                </div>
+                <div class="sm:col-span-2 flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center justify-between" for="no_whatsapp">
+                    <span>Nomor WhatsApp / HP Aktif (10-14 Karakter) <span style="color: #ba1a1a;">*</span></span>
+                  </label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-3.5 text-[#8c716d] text-[20px]">chat</span>
+                    <input class="w-full pl-11 pr-4 py-3 bg-surface-container-low font-tabular-time text-body-md text-on-surface rounded-lg focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all placeholder:text-[#8c716d]/60 placeholder:font-normal" 
+                           id="no_whatsapp" 
+                           placeholder="081234567890" 
+                           type="tel" 
+                           minlength="10" 
+                           maxlength="14">
+                  </div>
+                </div>
+                <div class="sm:col-span-2 flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="instansi_asal">
+                    Instansi / Lembaga / Media / Organisasi <span style="color: #ba1a1a;">*</span>
+                  </label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-3.5 text-[#8c716d] text-[20px]">corporate_fare</span>
+                    <input class="w-full pl-11 pr-4 py-3 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all placeholder:text-[#8c716d]/60 placeholder:font-normal" id="instansi_asal" placeholder="Misal: DPD Partai Golkar Riau / TVRI Riau / Badan Publik / Mandiri" type="text">
+                  </div>
+                </div>
+                <div class="sm:col-span-2 flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="alamat_domisili">Alamat Domisili / Kantor Asal</label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-3.5 text-[#8c716d] text-[20px]">location_on</span>
+                    <input class="w-full pl-11 pr-4 py-3 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all placeholder:text-[#8c716d]/60 placeholder:font-normal" id="alamat_domisili" placeholder="Contoh: Jl. Sudirman No. 45, Kota Pekanbaru, Riau" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-5">
+              <div class="flex items-center gap-2 pb-2" style="color: #3f0000;">
+                <span class="material-symbols-outlined text-[22px]">account_tree</span>
+                <span class="font-headline-sm text-headline-sm">Tujuan &amp; Agenda Kunjungan</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="sm:col-span-2 flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="unit_tujuan">Bagian yang Dituju <span style="color: #ba1a1a;">*</span></label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-3.5 text-[#8c716d] text-[20px]">domain</span>
+                    <select class="w-full pl-11 pr-10 py-3 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] appearance-none cursor-pointer" id="unit_tujuan">
+                      <option disabled selected value="">Pilih Bagian KPU yang Dituju...</option>
+                      <option value="1. Komisioner">Komisioner</option>
+		      <option value="2. Sekretaris">Sekretaris</option>
+                      <option value="3. Bagian Keuangan, Umum dan Logistik">Bagian Keuangan, Umum, dan Logistik</option>
+                      <option value="4. Bagian Partisipasi, Humas dan Organisasi">Bagian Partisipasi, Humas dan Organisasi</option>
+                      <option value="5. Bagian Teknis Penyelenggaraan Pemilu dan Hukum">Bagian Teknis Penyelenggaraan Pemilu dan Hukum</option>
+                      <option value="6. Bagian Perencanaan, Data dan Informasi">Bagian Perencanaan, Data dan Informasi</option>
+                      <option value="7. Meja Layanan PPID / Informasi Publik">Meja Layanan PPID / Informasi Publik</option>
+                      <option value="8. Lainnya">Lainnya</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-3 pointer-events-none text-[#8c716d] text-[20px]">expand_more</span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="pejabat_dituju">Pejabat / Staf Dituju <span class="text-on-surface-variant font-normal text-body-sm">(Opsional)</span></label>
+                  <input class="w-full px-4 py-3 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all placeholder:text-[#8c716d]/60 placeholder:font-normal" id="pejabat_dituju" placeholder="Nama pejabat jika sudah ada janji temu" type="text">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold">Jumlah Anggota Rombongan</label>
+                  <div class="flex items-center h-12 bg-surface-container-low rounded-lg p-1">
+                    <button class="w-10 h-10 rounded-md bg-[#dae2fd] flex items-center justify-center hover:bg-[#775a19] hover:text-white transition-all cursor-pointer" id="btnDecrement" type="button" style="color: #3f0000;">
+                      <span class="material-symbols-outlined text-[18px]">remove</span>
+                    </button>
+                    <div class="flex-1 text-center font-headline-sm text-headline-sm font-bold" id="visitorCount" style="color: #3f0000;">0</div>
+                    <button class="w-10 h-10 rounded-md bg-[#dae2fd] flex items-center justify-center hover:bg-[#775a19] hover:text-white transition-all cursor-pointer" id="btnIncrement" type="button" style="color: #3f0000;">
+                      <span class="material-symbols-outlined text-[18px]">add</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="sm:col-span-2 flex flex-col gap-1.5">
+                  <label class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center justify-between" for="maksud_kunjungan">
+                    <span>Maksud &amp; Perihal Kunjungan <span style="color: #ba1a1a;">*</span></span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">Ringkas &amp; Jelas</span>
+                  </label>
+                  <textarea class="w-full p-4 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all resize-none placeholder:text-[#8c716d]/60 placeholder:font-normal" id="maksud_kunjungan" placeholder="Jelaskan secara ringkas perihal audiensi, koordinasi berkas rekapitulasi, penyerahan surat keputusan, sengketa, peliputan media, atau keperluan permohonan informasi publik..." rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 flex flex-col gap-6 sticky top-24">
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-md flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2" style="color: #3f0000;">
+                  <span class="material-symbols-outlined text-[22px]">photo_camera</span>
+                  <span class="font-headline-sm text-headline-sm">Foto Wajah Tamu</span>
+                </div>
+                <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-800">
+                  <span id="cameraStatusDot" class="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span id="cameraStatusText" class="font-label-md text-label-md font-semibold">Kamera Siap</span>
+                </div>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Registrasi Pengunjung Pertama Kali</p>
+              
+              <div class="relative w-full aspect-square max-h-[360px] rounded-xl overflow-hidden bg-[#131b2e] flex items-center justify-center shadow-inner">
+                <video id="webcamVideo" autoplay playsinline class="w-full h-full object-cover hidden"></video>
+                <canvas id="webcamCanvas" class="w-full h-full object-cover hidden"></canvas>
+                
+                <div id="cameraPreview" class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#283044] to-[#131b2e] text-[#ffdea5] p-6 text-center">
+                  <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-3 shadow-md">
+                    <span class="material-symbols-outlined text-[44px]">photo_camera</span>
+                  </div>
+                  <span class="font-title-md font-bold text-white">Pratinjau Foto Tamu</span>
+                  <p class="font-body-sm text-[#dae2fd] mt-1 opacity-80">Klik "Ambil Selfie" untuk mengaktifkan kamera atau unggah foto</p>
+                </div>
+                
+                <div class="absolute inset-0 pointer-events-none flex flex-col items-center justify-center p-6">
+                  <div class="w-48 h-64 border-2 border-dashed border-[#775a19] rounded-full shadow-[0_0_20px_rgba(119,90,25,0.3)] flex items-center justify-center relative">
+                    <div class="w-3 h-0.5 bg-[#775a19] absolute top-0"></div>
+                    <div class="w-3 h-0.5 bg-[#775a19] absolute bottom-0"></div>
+                    <div class="h-3 w-0.5 bg-[#775a19] absolute left-0"></div>
+                    <div class="h-3 w-0.5 bg-[#775a19] absolute right-0"></div>
+                  </div>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white bg-[#670000]/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-body-sm font-tabular-time">
+                  <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-[#ffdea5]">videocam</span><span>KAMERA KIOS - FRONT DESK</span></div>
+                  <span class="text-[#ffdea5] live-clock-text">--</span>
+                </div>
+                <div class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-300" id="captureFlash"></div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <button class="btn-kpu-maroon h-12 rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer" id="btnSnapPhoto" type="button">
+                  <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                  <span>Ambil Selfie</span>
+                </button>
+                <button class="h-12 rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-[#dae2fd] transition-all cursor-pointer" id="btnRetakePhoto" type="button"><span class="material-symbols-outlined text-[20px]">refresh</span><span>Ulangi Foto</span></button>
+              </div>
+              <div class="flex items-center gap-3 py-1">
+                <div class="flex-1 h-px bg-[#8c716d]/20"></div>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">atau</span>
+                <div class="flex-1 h-px bg-[#8c716d]/20"></div>
+              </div>
+              <label class="cursor-pointer w-full py-2.5 px-4 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-center gap-2 font-label-lg text-label-lg transition-all font-semibold" style="color: #3f0000;">
+                <span class="material-symbols-outlined text-[20px]">upload_file</span>
+                <span>Unggah Foto dari Perangkat</span>
+                <input id="filePhotoInput" accept="image/*" class="hidden" type="file">
+              </label>
+            </div>
+
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-5">
+              <label class="flex items-start gap-3 cursor-pointer group">
+                <input class="mt-1 rounded focus:ring-0 focus:outline-none h-5 w-5 cursor-pointer" id="chkIntegritas" type="checkbox" style="accent-color: #3f0000;">
+                <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface leading-snug">
+                  Saya menyatakan seluruh data yang diisi adalah benar, sah, serta bersedia mematuhi ketentuan tata tertib dan protokol keamanan di lingkungan KPU Provinsi Riau.
+                </span>
+              </label>
+              
+              <button class="nav-link btn-kpu-maroon w-full min-h-[56px] rounded-xl font-headline-sm text-headline-sm tracking-tight flex items-center justify-center gap-3 shadow-lg cursor-pointer border border-[#ffdea5]/20" id="btnSubmitVisitor" type="button">
+                <span class="material-symbols-outlined text-[24px]">check_circle</span>
+                <span>Simpan Kunjungan &amp; Selesai</span>
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+              </button>
+
+              <div class="flex items-center justify-center gap-4 text-on-surface-variant text-body-sm pt-1">
+                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" style="color: #775a19;">verified_user</span><span>Enkripsi ISO 27001</span></div>
+                <span>•</span>
+                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" style="color: #775a19;">lock</span><span>Data Dilindungi KPU Riau</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-low rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 mt-2">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[26px]" style="color: #775a19;">support_agent</span>
+            <div class="flex flex-col">
+              <span class="font-title-md text-title-md" style="color: #3f0000;">Membutuhkan Bantuan Registrasi Kunjungan?</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Silakan hubungi WhatsApp Help Desk <span class="font-semibold font-tabular-time" style="color: #3f0000;">0822-5533-3911</span> atau kunjungi Petugas Front Desk di Meja Resepsionis lobi utama untuk panduan registrasi.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: NOMOR TIDAK TERDAFTAR -->
+    <div id="view-nomor-tidak-terdaftar" class="app-view flex flex-col w-full hidden">
+      <div class="relative w-full px-margin-mobile md:px-margin max-w-7xl mx-auto py-space-md md:py-space-lg flex flex-col gap-space-lg">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-xl shadow-sm">
+          <nav aria-label="Breadcrumb" class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+            <a class="nav-link hover:text-[#3f0000] transition-colors flex items-center gap-1 font-label-md text-label-md cursor-pointer" data-target="view-beranda" href="#beranda">
+              <span class="material-symbols-outlined text-body-md">home</span>
+              <span>Beranda</span>
+            </a>
+            <span class="material-symbols-outlined text-body-sm opacity-60">chevron_right</span>
+            <a class="nav-link hover:text-[#3f0000] transition-colors font-label-md text-label-md cursor-pointer" data-target="view-cari-tamu-lama" href="#cari-tamu-lama">Kunjungan Berulang</a>
+            <span class="material-symbols-outlined text-body-sm opacity-60">chevron_right</span>
+            <span class="font-label-lg text-label-lg font-semibold" style="color: #3f0000;">Status Pencarian</span>
+          </nav>
+          <div class="flex items-center gap-space-xs font-label-md text-label-md self-start sm:self-auto px-space-sm py-0.5 rounded-full" style="background-color: rgba(254, 212, 136, 0.4); color: #775a19;">
+            <span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+            <span>Sistem SAPA KPU RIAU</span>
+          </div>
+        </div>
+
+        <div class="relative overflow-hidden bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-xl">
+          <div class="absolute -right-12 -bottom-16 w-80 h-80 opacity-[0.03] pointer-events-none text-[#3f0000]">
+            <svg class="w-full h-full" fill="currentColor" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" fill="none" r="90" stroke="currentColor" stroke-width="6"></circle>
+              <circle cx="100" cy="100" fill="none" r="76" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M100 20 L108 45 L135 45 L113 61 L121 86 L100 70 L79 86 L87 61 L65 45 L92 45 Z"></path>
+              <path d="M70 120 C70 100 130 100 130 120 L130 150 L70 150 Z"></path>
+            </svg>
+          </div>
+          <div class="relative flex flex-col md:flex-row items-start md:items-center gap-space-lg">
+            <div class="relative shrink-0 flex items-center justify-center">
+              <div class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#ffdad6]/60 flex items-center justify-center shadow-inner">
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#670000] flex items-center justify-center text-white shadow-md">
+                  <span class="material-symbols-outlined text-[38px] md:text-[44px]">contact_support</span>
+                </div>
+              </div>
+              <div class="absolute -bottom-1 -right-1 text-white w-8 h-8 rounded-full flex items-center justify-center shadow" style="background-color: #775a19;">
+                <span class="material-symbols-outlined text-body-lg">priority_high</span>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-col gap-space-xs">
+              <div class="flex flex-wrap items-center gap-space-xs">
+                <span class="bg-[#ffdad6] text-[#93000a] px-space-sm py-0.5 rounded-full font-label-md text-label-md font-semibold tracking-wide uppercase">
+                  Data Kontak Tidak Ditemukan
+                </span>
+              </div>
+              <h1 class="font-headline-lg text-headline-lg tracking-tight font-extrabold mt-1" style="color: #3f0000;">
+                Nomor WhatsApp / Kontak Belum Terdaftar
+              </h1>
+              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+                Nomor kontak yang Anda masukkan 
+                <span class="font-badge-code text-badge-code font-bold px-space-xs py-0.5 rounded mx-1" id="searchedNumberDisplay" style="background-color: rgba(254, 212, 136, 0.5); color: #785a1a;">
+                  -
+                </span> 
+                belum tercatat dalam basis data riwayat kunjungan SAPA KPU Riau atau belum pernah melakukan registrasi sebelumnya di kantor KPU Provinsi Riau.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg items-stretch">
+          <div class="text-white rounded-xl shadow-lg p-space-lg md:p-space-xl flex flex-col justify-between relative overflow-hidden group" style="background-color: #670000;">
+            <div class="absolute -right-8 -top-8 w-44 h-44 bg-white/5 rounded-full blur-xl pointer-events-none"></div>
+            <div class="flex flex-col gap-space-md relative z-10">
+              <div class="flex items-center justify-between">
+                <span class="text-white font-label-md text-label-md font-bold px-space-sm py-1 rounded-md tracking-wider uppercase" style="background-color: #775a19;">Rekomendasi Utama</span>
+                <span class="material-symbols-outlined text-[#ffdea5] text-headline-sm">how_to_reg</span>
+              </div>
+              <div>
+                <h2 class="font-headline-md text-headline-md text-white font-bold">Daftar Sebagai Tamu Baru (Registrasi Pertama Kali)</h2>
+                <p class="font-body-md text-body-md text-white/90 mt-space-xs leading-relaxed">Khusus untuk tamu eksternal (Bawaslu, partai politik, instansi pemerintah, media, LSM, civitas akademika, dan masyarakat) yang baru pertama kali berkunjung. Cukup lengkapi identitas dasar dan tujuan kunjungan ke Bagian terkait.</p>
+              </div>
+            </div>
+            <div class="mt-space-lg pt-space-md relative z-10">
+              <a class="nav-link btn-kpu-brown w-full inline-flex items-center justify-center gap-space-sm py-3.5 px-space-lg rounded-lg font-headline-sm text-headline-sm transition-all shadow-md cursor-pointer font-bold" data-target="view-registrasi-tamu-baru" href="#registrasi-tamu-baru">
+                <span>Buka Formulir Registrasi Baru</span>
+                <span class="material-symbols-outlined text-white">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg md:p-space-xl flex flex-col justify-between">
+            <div class="flex flex-col gap-space-md">
+              <div class="flex items-center justify-between">
+                <span class="bg-surface-container text-on-surface-variant font-label-md text-label-md font-semibold px-space-sm py-1 rounded-md uppercase">Opsi Alternatif</span>
+                <span class="material-symbols-outlined text-on-surface-variant text-headline-sm">replay</span>
+              </div>
+              <div>
+                <h2 class="font-headline-sm text-headline-sm font-bold" style="color: #3f0000;">Cek Kembali Nomor Kontak</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Mungkin terjadi kesalahan pengetikan angka atau Anda pernah menggunakan nomor seluler/WhatsApp lain pada kunjungan sebelumnya.</p>
+              </div>
+              <form class="flex flex-col gap-space-sm mt-space-xs" id="recheckForm">
+                <label class="font-label-lg text-label-lg text-on-surface flex items-center justify-between" for="contactInput">
+                  <span>Nomor WhatsApp / Kontak</span>
+                </label>
+                <div class="relative flex items-center">
+                  <span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant pointer-events-none">phone_iphone</span>
+                  <input class="w-full bg-surface-container-low pl-11 pr-space-md py-3 rounded-lg font-badge-code text-badge-code text-on-surface placeholder:text-on-surface-variant/50 focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all" id="contactInput" inputmode="numeric" placeholder="081234567890" minlength="10" maxlength="14" required="" type="tel" value="">
+                </div>
+                <button class="w-full inline-flex items-center justify-center gap-space-xs bg-surface-container hover:bg-[#dae2fd] font-label-lg text-label-lg py-3 px-space-md rounded-lg transition-all mt-space-xs font-semibold cursor-pointer" type="submit" style="color: #3f0000;">
+                  <span class="material-symbols-outlined text-body-lg">search</span>
+                  <span>Cari Ulang Data Kehadiran</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 5: KONFIRMASI & SURVEI -->
+    <div id="view-konfirmasi-dan-survei" class="app-view flex flex-col w-full hidden">
+      <div class="relative w-full overflow-hidden pb-space-xl">
+        <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin pt-space-md">
+          <div class="text-center max-w-2xl mx-auto mb-space-xl">
+            <div class="inline-flex items-center justify-center p-3 rounded-full text-[#ffdea5] shadow-xl mb-space-sm" style="background-color: #3f0000;">
+              <div class="w-14 h-14 rounded-full flex items-center justify-center" style="background-color: #670000;"><span class="material-symbols-outlined text-[36px] text-[#ffdea5]">check_circle</span></div>
+            </div>
+            <h2 class="font-headline-lg text-headline-lg tracking-tight font-bold" style="color: #3f0000;">Registrasi Kunjungan Berhasil!</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">Data kunjungan Anda telah resmi tercatat di sistem KPU Provinsi Riau.</p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+            <div class="lg:col-span-7 flex flex-col gap-space-md">
+              <div class="w-full bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden border border-[#e0bfba]/30" id="proof-card">
+                <div class="px-space-md py-4 text-white flex items-center justify-between" style="background-color: #670000;">
+                  <div class="flex items-center gap-space-sm">
+                    <img alt="Logo KPU" class="w-9 h-9 object-contain" src="https://www.kpu.go.id/images/1627539868logo-kpu.png">
+                    <div>
+                      <span class="font-badge-code text-[11px] text-[#ffdea5] uppercase font-bold block">BUKTI REGISTRASI KUNJUNGAN</span>
+                      <h3 class="font-headline-sm text-headline-sm text-white font-bold leading-tight">KPU PROVINSI RIAU</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-space-lg flex flex-col gap-space-md">
+                  <div class="flex flex-col sm:flex-row items-center sm:items-start gap-space-md">
+                    <div class="w-28 h-36 rounded-lg overflow-hidden bg-surface-container shadow-md shrink-0 flex items-center justify-center text-[#3f0000]" id="card-photo-container">
+                      <span class="material-symbols-outlined text-[64px]" id="card-guest-icon">account_circle</span>
+                      <img id="card-guest-photo" alt="Foto Tamu" class="w-full h-full object-cover hidden" src="">
+                    </div>
+                    <div class="flex flex-col flex-1 text-center sm:text-left min-w-0">
+                      <h4 id="card-guest-name" class="font-headline-md text-headline-md font-extrabold truncate" style="color: #3f0000;">Nama Tamu</h4>
+                      <div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm mt-0.5 justify-center sm:justify-start">
+                        <span class="material-symbols-outlined text-[16px]" style="color: #775a19;">account_balance</span>
+                        <span id="card-guest-org" class="font-semibold text-on-surface truncate">Instansi Tamu</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 flex flex-col gap-space-lg">
+              <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-xl border-2 border-[#fed488] flex flex-col gap-space-md">
+                <h3 class="font-title-md text-title-md font-bold" style="color: #3f0000;">Selesai / Sembunyikan</h3>
+                <a class="nav-link btn-kpu-maroon w-full py-3.5 px-space-md rounded-lg font-label-lg text-label-lg font-bold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer" data-target="view-beranda" href="#beranda">
+                  <span class="material-symbols-outlined text-title-md">home</span>
+                  <span>Kembali ke Beranda</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="fixed bottom-6 right-6 bg-surface-container-lowest text-on-surface p-space-md rounded-xl shadow-2xl flex items-center gap-space-sm transform translate-y-24 opacity-0 transition-all duration-300 z-50 pointer-events-none" id="toast-notification">
+    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background-color: #fed488; color: #785a1a;">
+      <span class="material-symbols-outlined text-headline-sm">check_circle</span>
+    </div>
+    <div class="flex flex-col">
+      <span class="font-title-md text-title-md font-bold" id="toast-title" style="color: #3f0000;">Berhasil!</span>
+      <span class="font-body-sm text-body-sm text-on-surface-variant" id="toast-desc">-</span>
+    </div>
+  </div>
+
+  <footer class="w-full border-t border-slate-200/80 bg-surface-container-lowest text-on-surface-variant font-sans mt-auto">
+    <div class="max-w-6xl mx-auto px-margin py-space-xl grid grid-cols-1 md:grid-cols-3 gap-gutter items-start">
+      <div class="flex flex-col gap-space-xs">
+        <div class="flex items-center gap-space-xs font-headline-sm text-headline-sm font-bold" style="color: #3f0000;">
+          <span class="material-symbols-outlined" style="color: #775a19;">account_balance</span>
+          <span>KPU Provinsi Riau</span>
+        </div>
+        <p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mt-1">Layanan administrasi dan penerimaan tamu resmi Komisi Pemilihan Umum Provinsi Riau.</p>
+      </div>
+    </div>
+    <div class="border-t border-slate-200/80 bg-surface-container-low py-4 px-margin">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-xs text-xs text-slate-500">
+        <span>© 2026 Komisi Pemilihan Umum Provinsi Riau.</span>
+        <span class="font-medium text-slate-600">SAPA KPU RIAU — Sistem Administrasi Pelayanan Tamu</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==========================================
+    // MASUKKAN URL WEB APP GOOGLE APPS SCRIPT ANDA DI SINI
+    // ==========================================
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwezoarSDBCnx_TKGLbpo9TLRtDUBEY73y82vmNlDTww9bIPyfs57Pwr1lY030Dx5YR/exec";
+
+    let mediaStream = null;
+    let capturedImageData = "";
+    let activeGuestData = null;
+    let currentCount = 0;
+    let repeatCount = 0;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll('.nav-link, header nav a');
+      const views = document.querySelectorAll('.app-view');
+
+      function resetAllForms() {
+        const inputNama = document.getElementById('nama_lengkap');
+        const inputWa = document.getElementById('no_whatsapp');
+        const inputInstansi = document.getElementById('instansi_asal');
+        const inputAlamat = document.getElementById('alamat_domisili');
+        const selectUnit = document.getElementById('unit_tujuan');
+        const inputPejabat = document.getElementById('pejabat_dituju');
+        const txtMaksud = document.getElementById('maksud_kunjungan');
+        const chkIntegritas = document.getElementById('chkIntegritas');
+        const filePhotoInput = document.getElementById('filePhotoInput');
+
+        if (inputNama) inputNama.value = '';
+        if (inputWa) inputWa.value = '';
+        if (inputInstansi) inputInstansi.value = '';
+        if (inputAlamat) inputAlamat.value = '';
+        if (selectUnit) selectUnit.selectedIndex = 0;
+        if (inputPejabat) inputPejabat.value = '';
+        if (txtMaksud) txtMaksud.value = '';
+        if (chkIntegritas) chkIntegritas.checked = false;
+        if (filePhotoInput) filePhotoInput.value = '';
+
+        currentCount = 0;
+        repeatCount = 0;
+        const countDisplay = document.getElementById('visitorCount');
+        const repeatCountDisplay = document.getElementById('repeatVisitorCount');
+        if (countDisplay) countDisplay.textContent = '0';
+        if (repeatCountDisplay) repeatCountDisplay.textContent = '0';
+
+        const phoneInput = document.getElementById('phone-input');
+        const destBagian = document.getElementById('dest-bagian');
+        const resultFoundSec = document.getElementById('result-found-section');
+        const visitPurpose = document.getElementById('visit-purpose');
+
+        if (phoneInput) phoneInput.value = '';
+        if (destBagian) destBagian.selectedIndex = 0;
+        if (visitPurpose) visitPurpose.value = '';
+        if (resultFoundSec) resultFoundSec.classList.add('hidden');
+
+        capturedImageData = "";
+        const canvas = document.getElementById('webcamCanvas');
+        const video = document.getElementById('webcamVideo');
+        const placeholderImg = document.getElementById('cameraPreview');
+        
+        if (canvas) canvas.classList.add('hidden');
+        if (video) video.classList.add('hidden');
+        if (placeholderImg) {
+          placeholderImg.innerHTML = `
+            <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-3 shadow-md">
+              <span class="material-symbols-outlined text-[44px]">photo_camera</span>
+            </div>
+            <span class="font-title-md font-bold text-white">Pratinjau Foto Tamu</span>
+            <p class="font-body-sm text-[#dae2fd] mt-1 opacity-80">Klik "Ambil Selfie" untuk mengaktifkan kamera atau unggah foto</p>
+          `;
+          placeholderImg.classList.remove('hidden');
+        }
+
+        const cameraStatusDot = document.getElementById('cameraStatusDot');
+        const cameraStatusText = document.getElementById('cameraStatusText');
+        if (cameraStatusDot) cameraStatusDot.className = "w-2 h-2 rounded-full bg-amber-500";
+        if (cameraStatusText) cameraStatusText.textContent = "Kamera Siap";
+      }
+
+      function switchView(targetId) {
+        if (targetId === 'view-beranda') {
+          resetAllForms();
+        }
+
+        views.forEach(view => {
+          if (view.id === targetId) {
+            view.classList.remove('hidden');
+          } else {
+            view.classList.add('hidden');
+          }
+        });
+
+        navLinks.forEach(link => {
+          const target = link.getAttribute('data-target');
+          if (target === targetId) {
+            link.style.backgroundColor = "#fed488";
+            link.style.color = "#785a1a";
+            link.classList.add('font-semibold');
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.style.backgroundColor = "transparent";
+            link.style.color = "#ffffff";
+            link.classList.remove('font-semibold');
+            link.removeAttribute('aria-current');
+          }
+        });
+
+        if (targetId === 'view-registrasi-tamu-baru') {
+          startWebcam();
+        } else {
+          stopWebcam();
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('data-target');
+          if (targetId) {
+            e.preventDefault();
+            switchView(targetId);
+          }
+        });
+      });
+
+      function updateTime() {
+        const now = new Date();
+        const pad = (n) => String(n).padStart(2, '0');
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'];
+        const dayName = days[now.getDay()];
+        const day = pad(now.getDate());
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hours = pad(now.getHours());
+        const mins = pad(now.getMinutes());
+        const secs = pad(now.getSeconds());
+        const timeStr = `${dayName}, ${day} ${month} ${year} • ${hours}:${mins}:${secs} WIB`;
+
+        document.querySelectorAll('.live-clock-text').forEach(el => {
+          el.textContent = timeStr;
+        });
+      }
+      setInterval(updateTime, 1000);
+      updateTime();
+
+      const countDisplay = document.getElementById('visitorCount');
+      const btnInc = document.getElementById('btnIncrement');
+      const btnDec = document.getElementById('btnDecrement');
+
+      if (btnInc && btnDec && countDisplay) {
+        btnInc.addEventListener('click', () => {
+          if (currentCount < 50) {
+            currentCount++;
+            countDisplay.textContent = currentCount;
+          }
+        });
+        btnDec.addEventListener('click', () => {
+          if (currentCount > 0) {
+            currentCount--;
+            countDisplay.textContent = currentCount;
+          }
+        });
+      }
+
+      const repeatCountDisplay = document.getElementById('repeatVisitorCount');
+      const btnRepeatInc = document.getElementById('btnRepeatIncrement');
+      const btnRepeatDec = document.getElementById('btnRepeatDecrement');
+
+      if (btnRepeatInc && btnRepeatDec && repeatCountDisplay) {
+        btnRepeatInc.addEventListener('click', () => {
+          if (repeatCount < 50) {
+            repeatCount++;
+            repeatCountDisplay.textContent = repeatCount;
+          }
+        });
+        btnRepeatDec.addEventListener('click', () => {
+          if (repeatCount > 0) {
+            repeatCount--;
+            repeatCountDisplay.textContent = repeatCount;
+          }
+        });
+      }
+
+      const video = document.getElementById('webcamVideo');
+      const canvas = document.getElementById('webcamCanvas');
+      const placeholderImg = document.getElementById('cameraPreview');
+      const snapBtn = document.getElementById('btnSnapPhoto');
+      const retakeBtn = document.getElementById('btnRetakePhoto');
+      const flashOverlay = document.getElementById('captureFlash');
+      const filePhotoInput = document.getElementById('filePhotoInput');
+
+      async function startWebcam() {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          console.warn("Kamera tidak didukung.");
+          return;
+        }
+
+        try {
+          mediaStream = await navigator.mediaDevices.getUserMedia({ 
+            video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 640 } }, 
+            audio: false 
+          });
+          
+          if (video) {
+            video.srcObject = mediaStream;
+            video.classList.remove('hidden');
+            if (placeholderImg) placeholderImg.classList.add('hidden');
+            
+            const cameraStatusDot = document.getElementById('cameraStatusDot');
+            const cameraStatusText = document.getElementById('cameraStatusText');
+            if (cameraStatusDot) cameraStatusDot.className = "w-2 h-2 rounded-full bg-emerald-600 animate-pulse";
+            if (cameraStatusText) cameraStatusText.textContent = "Webcam HD Aktif";
+          }
+        } catch (err) {
+          console.warn("Akses kamera diblokir:", err);
+          const cameraStatusDot = document.getElementById('cameraStatusDot');
+          const cameraStatusText = document.getElementById('cameraStatusText');
+          if (cameraStatusDot) cameraStatusDot.className = "w-2 h-2 rounded-full bg-red-500";
+          if (cameraStatusText) cameraStatusText.textContent = "Izin Kamera Diblokir";
+        }
+      }
+
+      function stopWebcam() {
+        if (mediaStream) {
+          mediaStream.getTracks().forEach(track => track.stop());
+          mediaStream = null;
+        }
+        if (video) video.classList.add('hidden');
+        if (placeholderImg && !capturedImageData) placeholderImg.classList.remove('hidden');
+      }
+
+      if (snapBtn) {
+        snapBtn.addEventListener('click', () => {
+          if (flashOverlay) {
+            flashOverlay.classList.remove('opacity-0');
+            flashOverlay.classList.add('opacity-90');
+            setTimeout(() => {
+              flashOverlay.classList.remove('opacity-90');
+              flashOverlay.classList.add('opacity-0');
+            }, 250);
+          }
+
+          if (video && !video.classList.contains('hidden') && canvas) {
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth || 300;
+            canvas.height = video.videoHeight || 300;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            capturedImageData = canvas.toDataURL('image/png');
+            video.classList.add('hidden');
+            canvas.classList.remove('hidden');
+          } else {
+            capturedImageData = "DEFAULT_SIMULATED_SELFIE";
+          }
+          showToast("Foto Berhasil Diambil", "Selfie verifikasi wajah telah berhasil ditangkap.");
+        });
+      }
+
+      if (retakeBtn) {
+        retakeBtn.addEventListener('click', () => {
+          capturedImageData = "";
+          if (canvas) canvas.classList.add('hidden');
+          if (video && mediaStream) {
+            video.classList.remove('hidden');
+          } else {
+            startWebcam();
+          }
+        });
+      }
+
+      if (filePhotoInput) {
+        filePhotoInput.addEventListener('change', function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              capturedImageData = event.target.result;
+              if (placeholderImg) {
+                placeholderImg.innerHTML = `<img src="${capturedImageData}" class="w-full h-full object-cover">`;
+                placeholderImg.classList.remove('hidden');
+              }
+              if (video) video.classList.add('hidden');
+              if (canvas) canvas.classList.add('hidden');
+              showToast("Foto Berhasil Diunggah", "Foto dari perangkat telah dimuat.");
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      const phoneInput = document.getElementById('phone-input');
+      const btnSearch = document.getElementById('btn-search-trigger');
+      const searchIcon = document.getElementById('search-icon');
+      const searchBtnText = document.getElementById('search-btn-text');
+      const keypadBtns = document.querySelectorAll('.keypad-btn');
+      const keypadClear = document.getElementById('keypad-clear');
+      const resultFoundSec = document.getElementById('result-found-section');
+
+      if (btnSearch && phoneInput) {
+        btnSearch.addEventListener('click', async () => {
+          const phoneNumber = phoneInput.value.replace(/\D/g, '');
+
+          if (!phoneNumber || phoneNumber.length < 10 || phoneNumber.length > 14) {
+            alert("Nomor telepon harus terdiri dari 10 hingga 14 karakter angka.");
+            return;
+          }
+
+          if (searchIcon) {
+            searchIcon.className = "material-symbols-outlined text-body-lg animate-spin-custom";
+            searchIcon.textContent = "progress_activity";
+          }
+          if (searchBtnText) searchBtnText.textContent = "Mencari Data...";
+          btnSearch.disabled = true;
+          if (resultFoundSec) resultFoundSec.classList.add('hidden');
+
+          try {
+            let response = await fetch(`${WEB_APP_URL}?action=check_phone&phone=${phoneNumber}`);
+            let result = await response.json();
+
+            if (result.found) {
+              activeGuestData = result.data;
+              updateRepeatGuestUI(result.data);
+              if (resultFoundSec) resultFoundSec.classList.remove('hidden');
+            } else {
+              const searchedDisp = document.getElementById('searchedNumberDisplay');
+              if (searchedDisp) searchedDisp.textContent = phoneNumber;
+              switchView('view-nomor-tidak-terdaftar');
+            }
+          } catch (error) {
+            console.warn("Gagal terhubung ke Google Sheets API:", error);
+            const searchedDisp = document.getElementById('searchedNumberDisplay');
+            if (searchedDisp) searchedDisp.textContent = phoneNumber;
+            switchView('view-nomor-tidak-terdaftar');
+          } finally {
+            if (searchIcon) {
+              searchIcon.className = "material-symbols-outlined text-body-lg";
+              searchIcon.textContent = "search";
+            }
+            if (searchBtnText) searchBtnText.textContent = "Cari & Verifikasi Data";
+            btnSearch.disabled = false;
+          }
+        });
+      }
+
+      function updateRepeatGuestUI(data) {
+        if (!data) return;
+        if (document.getElementById('existing-guest-name')) document.getElementById('existing-guest-name').textContent = data.nama_lengkap || "-";
+        if (document.getElementById('existing-guest-org')) document.getElementById('existing-guest-org').textContent = data.instansi_asal || "-";
+      }
+
+      keypadBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (phoneInput && phoneInput.value.length < 14) {
+            phoneInput.value += btn.textContent.trim();
+          }
+        });
+      });
+
+      if (keypadClear && phoneInput) {
+        keypadClear.addEventListener('click', () => {
+          phoneInput.value = phoneInput.value.slice(0, -1);
+        });
+      }
+
+      const recheckForm = document.getElementById('recheckForm');
+      if (recheckForm) {
+        recheckForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const contactInput = document.getElementById('contactInput');
+          if (contactInput && phoneInput) {
+            const cleanNum = contactInput.value.replace(/\D/g, '');
+            if (cleanNum.length < 10 || cleanNum.length > 14) {
+              alert("Nomor telepon harus terdiri dari 10 hingga 14 karakter angka.");
+              return;
+            }
+            phoneInput.value = cleanNum;
+            switchView('view-cari-tamu-lama');
+            if (btnSearch) btnSearch.click();
+          }
+        });
+      }
+
+      const btnSubmitVisitor = document.getElementById('btnSubmitVisitor');
+      const btnConfirmRepeatVisit = document.getElementById('btnConfirmRepeatVisit');
+
+      if (btnSubmitVisitor) {
+        btnSubmitVisitor.addEventListener('click', async () => {
+          const chkIntegritas = document.getElementById('chkIntegritas');
+          if (chkIntegritas && !chkIntegritas.checked) {
+            alert("Mohon centang pernyataan persetujuan integritas sebelum menyimpan.");
+            return;
+          }
+
+          const noWa = document.getElementById('no_whatsapp')?.value.replace(/\D/g, '') || "";
+          if (noWa.length < 10 || noWa.length > 14) {
+            alert("Nomor WhatsApp harus terdiri dari 10 hingga 14 karakter angka.");
+            return;
+          }
+
+          const formData = {
+            nama_lengkap: document.getElementById('nama_lengkap')?.value || "",
+            no_whatsapp: noWa,
+            instansi_asal: document.getElementById('instansi_asal')?.value || "",
+            guest_category: document.querySelector('input[name="guest_category"]:checked')?.value || "eksternal",
+            unit_tujuan: document.getElementById('unit_tujuan')?.value || "",
+            maksud_kunjungan: document.getElementById('maksud_kunjungan')?.value || "",
+            visitorCount: currentCount,
+            foto: capturedImageData
+          };
+
+          if (!formData.nama_lengkap || !formData.no_whatsapp || !formData.unit_tujuan) {
+            alert("Mohon lengkapi Nama Lengkap, Nomor WhatsApp, dan Bagian yang Dituju.");
+            return;
+          }
+
+          populateTicketProof(formData);
+
+          try {
+            btnSubmitVisitor.innerHTML = "Menyimpan ke Database...";
+            await fetch(WEB_APP_URL, {
+              method: "POST",
+              mode: "no-cors", // Penting untuk bypass CORS policy Google Apps Script
+              body: JSON.stringify(formData)
+            });
+            showToast('Berhasil!', 'Data kunjungan tersimpan di Google Sheets KPU Riau.');
+          } catch (error) {
+            console.warn("Gagal terhubung ke Apps Script:", error);
+          } finally {
+            btnSubmitVisitor.innerHTML = `<span class="material-symbols-outlined text-[24px]">check_circle</span><span>Simpan Kunjungan &amp; Selesai</span><span class="material-symbols-outlined text-[20px]">arrow_forward</span>`;
+            switchView('view-konfirmasi-dan-survei');
+          }
+        });
+      }
+
+      if (btnConfirmRepeatVisit) {
+        btnConfirmRepeatVisit.addEventListener('click', async () => {
+          const selectedDest = document.getElementById('dest-bagian')?.value || "";
+          
+          if (!selectedDest) {
+            alert("Mohon pilih Bagian KPU yang dituju terlebih dahulu.");
+            return;
+          }
+
+          const formData = {
+            nama_lengkap: document.getElementById('existing-guest-name')?.textContent || "Tamu Berulang",
+            no_whatsapp: phoneInput?.value || "-",
+            instansi_asal: document.getElementById('existing-guest-org')?.textContent || "-",
+            guest_category: "eksternal",
+            unit_tujuan: selectedDest,
+            maksud_kunjungan: document.getElementById('visit-purpose')?.value || "-",
+            visitorCount: repeatCount,
+            foto: capturedImageData
+          };
+
+          populateTicketProof(formData);
+
+          try {
+            btnConfirmRepeatVisit.innerHTML = "Memproses...";
+            await fetch(WEB_APP_URL, {
+              method: "POST",
+              mode: "no-cors",
+              body: JSON.stringify(formData)
+            });
+          } catch (err) {
+            console.warn("Kirim data berulang:", err);
+          } finally {
+            btnConfirmRepeatVisit.innerHTML = `<span class="material-symbols-outlined text-[24px]">how_to_reg</span><span>Konfirmasi Kunjungan Hari Ini</span>`;
+            switchView('view-konfirmasi-dan-survei');
+          }
+        });
+      }
+
+      function populateTicketProof(data) {
+        if (document.getElementById('card-guest-name')) document.getElementById('card-guest-name').textContent = data.nama_lengkap || "-";
+        if (document.getElementById('card-guest-org')) document.getElementById('card-guest-org').textContent = data.instansi_asal || "-";
+        
+        const cardPhoto = document.getElementById('card-guest-photo');
+        const cardIcon = document.getElementById('card-guest-icon');
+        if (capturedImageData && capturedImageData !== "DEFAULT_SIMULATED_SELFIE" && cardPhoto) {
+          cardPhoto.src = capturedImageData;
+          cardPhoto.classList.remove('hidden');
+          if (cardIcon) cardIcon.classList.add('hidden');
+        } else {
+          if (cardPhoto) cardPhoto.classList.add('hidden');
+          if (cardIcon) cardIcon.classList.remove('hidden');
+        }
+      }
+
+      const toast = document.getElementById('toast-notification');
+      let toastTimer;
+      function showToast(title, msg) {
+        if (!toast) return;
+        document.getElementById('toast-title').textContent = title;
+        document.getElementById('toast-desc').textContent = msg;
+        toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3500);
+      }
+    });
+  </script>
+</body>
+</html>
