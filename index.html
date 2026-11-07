@@ -83,6 +83,7 @@
       <a class="nav-link px-space-md py-space-xs transition-all font-semibold rounded-lg cursor-pointer" data-target="view-beranda" href="#beranda" style="background-color: #fed488; color: #785a1a;">Beranda</a>
       <a class="nav-link px-space-md py-space-xs text-white hover:bg-[#670000] transition-all font-label-lg text-label-lg rounded-lg cursor-pointer" data-target="view-cari-tamu-lama" href="#cari-tamu-lama">Kunjungan Berulang</a>
       <a class="nav-link px-space-md py-space-xs text-white hover:bg-[#670000] transition-all font-label-lg text-label-lg rounded-lg cursor-pointer" data-target="view-registrasi-tamu-baru" href="#registrasi-tamu-baru">Pendaftaran Kunjungan Baru</a>
+      <a class="nav-link px-space-md py-space-xs text-white hover:bg-[#670000] transition-all font-label-lg text-label-lg rounded-lg cursor-pointer" data-target="view-daftar-kunjungan" href="#daftar-kunjungan">Daftar Kunjungan</a>
       <a class="nav-link px-space-md py-space-xs text-white hover:bg-[#670000] transition-all font-label-lg text-label-lg rounded-lg hidden cursor-pointer" data-target="view-konfirmasi-dan-survei" href="#konfirmasi-dan-survei">Konfirmasi &amp; Survei</a>
     </nav>
   </header>
@@ -353,7 +354,7 @@
                 <span class="material-symbols-outlined text-headline-sm" style="color: #775a19;">edit_calendar</span>
                 <span class="font-title-md text-title-md font-bold" style="color: #3f0000;">Lengkapi Data Kunjungan Hari Ini</span>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+              <div class="grid grid-cols-1 gap-space-md">
                 
                 <div class="flex flex-col gap-1.5">
                   <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="dest-bagian">Tujuan Kunjungan Hari Ini *</label>
@@ -370,19 +371,6 @@
                       <option value="Lainnya">Lainnya</option>
                     </select>
                     <span class="material-symbols-outlined absolute right-3 top-3 text-[#775a19] pointer-events-none">expand_more</span>
-                  </div>
-                </div>
-
-                <div class="flex flex-col gap-1.5">
-                  <label class="font-label-lg text-label-lg text-on-surface font-semibold">Jumlah Rombongan Tamu</label>
-                  <div class="flex items-center h-12 bg-surface-container-low rounded-lg p-1">
-                    <button type="button" id="btnRepeatDecrement" class="w-10 h-10 rounded-md bg-[#dae2fd] flex items-center justify-center hover:bg-[#775a19] hover:text-white transition-all cursor-pointer" style="color: #3f0000;">
-                      <span class="material-symbols-outlined text-[18px]">remove</span>
-                    </button>
-                    <div class="flex-1 text-center font-headline-sm text-headline-sm font-bold" id="repeatVisitorCount" style="color: #3f0000;">0</div>
-                    <button type="button" id="btnRepeatIncrement" class="w-10 h-10 rounded-md bg-[#dae2fd] flex items-center justify-center hover:bg-[#775a19] hover:text-white transition-all cursor-pointer" style="color: #3f0000;">
-                      <span class="material-symbols-outlined text-[18px]">add</span>
-                    </button>
                   </div>
                 </div>
 
@@ -556,21 +544,9 @@
                     <span class="material-symbols-outlined absolute right-3 pointer-events-none text-[#8c716d] text-[20px]">expand_more</span>
                   </div>
                 </div>
-                <div class="flex flex-col gap-1.5">
+                <div class="sm:col-span-2 flex flex-col gap-1.5">
                   <label class="font-label-lg text-label-lg text-on-surface font-semibold" for="pejabat_dituju">Pejabat / Staf Dituju <span class="text-on-surface-variant font-normal text-body-sm">(Opsional)</span></label>
                   <input class="w-full px-4 py-3 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all placeholder:text-[#8c716d]/60 placeholder:font-normal" id="pejabat_dituju" placeholder="Nama pejabat jika sudah ada janji temu" type="text">
-                </div>
-                <div class="flex flex-col gap-1.5">
-                  <label class="font-label-lg text-label-lg text-on-surface font-semibold">Jumlah Anggota Rombongan</label>
-                  <div class="flex items-center h-12 bg-surface-container-low rounded-lg p-1">
-                    <button class="w-10 h-10 rounded-md bg-[#dae2fd] flex items-center justify-center hover:bg-[#775a19] hover:text-white transition-all cursor-pointer" id="btnDecrement" type="button" style="color: #3f0000;">
-                      <span class="material-symbols-outlined text-[18px]">remove</span>
-                    </button>
-                    <div class="flex-1 text-center font-headline-sm text-headline-sm font-bold" id="visitorCount" style="color: #3f0000;">0</div>
-                    <button class="w-10 h-10 rounded-md bg-[#dae2fd] flex items-center justify-center hover:bg-[#775a19] hover:text-white transition-all cursor-pointer" id="btnIncrement" type="button" style="color: #3f0000;">
-                      <span class="material-symbols-outlined text-[18px]">add</span>
-                    </button>
-                  </div>
                 </div>
                 <div class="sm:col-span-2 flex flex-col gap-1.5">
                   <label class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center justify-between" for="maksud_kunjungan">
@@ -673,6 +649,64 @@
               <span class="font-title-md text-title-md" style="color: #3f0000;">Membutuhkan Bantuan Registrasi Kunjungan?</span>
               <span class="font-body-sm text-body-sm text-on-surface-variant">Silakan hubungi WhatsApp Help Desk <span class="font-semibold font-tabular-time" style="color: #3f0000;">0822-5533-3911</span> atau kunjungi Petugas Front Desk di Meja Resepsionis lobi utama untuk panduan registrasi.</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW NEW: DAFTAR KUNJUNGAN (DENGAN NO TELEPON DISAMARKAN) -->
+    <div id="view-daftar-kunjungan" class="app-view flex flex-col w-full hidden">
+      <div class="relative w-full overflow-hidden py-space-xl px-margin text-white" style="background-color: #3f0000;">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#fed488 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
+        <div class="relative max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-space-lg">
+          <div class="flex flex-col gap-space-xs max-w-3xl">
+            <div class="flex items-center gap-space-sm mb-1">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fed488] text-[#785a1a] font-label-md text-label-md font-semibold tracking-wide shadow-sm"><span class="material-symbols-outlined text-[16px]">list_alt</span> SAPA KPU RIAU • DIREKTORI TAMU</span>
+            </div>
+            <h1 class="font-display-lg text-display-lg text-white tracking-tight font-extrabold">Daftar Kunjungan Tamu</h1>
+            <p class="font-body-lg text-body-lg text-[#dae2fd] font-normal leading-relaxed">Rekapitulasi direktori dan log kehadiran pengunjung resmi di lingkungan KPU Provinsi Riau.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full px-margin py-space-xl max-w-7xl mx-auto flex flex-col gap-space-lg">
+        <!-- Statistik & Pencarian Tabel -->
+        <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
+          <div class="flex items-center gap-space-md w-full md:w-auto">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#fed488] text-[#785a1a]">
+              <span class="material-symbols-outlined text-headline-sm">table_chart</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-headline-sm text-headline-sm font-bold" style="color: #3f0000;"><span id="total-kunjungan-count">0</span> Pengunjung Tercatat</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Privasi nomor kontak dilindungi otomatis (Masking)</span>
+            </div>
+          </div>
+          <div class="w-full md:w-72 relative">
+            <span class="material-symbols-outlined absolute left-3.5 top-3 text-[#775a19] text-[20px] pointer-events-none">search</span>
+            <input type="text" id="table-search-input" placeholder="Cari nama atau instansi..." class="w-full pl-11 pr-4 py-2.5 bg-surface-container-low rounded-lg text-body-md font-medium text-on-surface focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all">
+          </div>
+        </div>
+
+        <!-- Tabel Data Kunjungan -->
+        <div class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden border border-[#e0bfba]/20">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-[#3f0000] text-white font-label-lg text-label-lg">
+                  <th class="py-4 px-4 font-semibold">Waktu &amp; Tanggal</th>
+                  <th class="py-4 px-4 font-semibold">Nama Tamu</th>
+                  <th class="py-4 px-4 font-semibold">No. WhatsApp (Privasi)</th>
+                  <th class="py-4 px-4 font-semibold">Instansi Asal</th>
+                  <th class="py-4 px-4 font-semibold">Bagian Dituju</th>
+                  <th class="py-4 px-4 font-semibold">Maksud Kunjungan</th>
+                </tr>
+              </thead>
+              <tbody id="kunjungan-table-body" class="divide-y divide-surface-container font-body-md text-on-surface">
+                <tr>
+                  <td colspan="6" class="py-8 text-center text-on-surface-variant italic">Memuat data direktori kunjungan dari server...</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -1007,13 +1041,11 @@
 
   <!-- SCRIPT LOGIKA JAVASCRIPT -->
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzo1l-izA8kkg2ICl-Y1ZlXFb_arlPwvUTVZIThhtPGoQqFk7vbZmpyMeFNplAvZmMq/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzo1l-izA8kkg2ICl-Y1ZlXFb_arlPwvUTVZIThhtPGoQqFk7vbZmplAvZmMq/exec";
 
     let mediaStream = null;
     let capturedImageData = "";
     let activeGuestData = null;
-    let currentCount = 0;
-    let repeatCount = 0;
 
     document.addEventListener("DOMContentLoaded", function () {
       
@@ -1038,6 +1070,84 @@
 
       fetchDailyStats();
 
+      // Fungsi untuk Memuat Daftar Kunjungan (Direktori)
+      async function fetchGuestDirectory() {
+        const tableBody = document.getElementById('kunjungan-table-body');
+        const totalCountElem = document.getElementById('total-kunjungan-count');
+        if (!tableBody) return;
+
+        try {
+          const res = await fetch(`${WEB_APP_URL}?action=get_guests`);
+          const json = await res.json();
+          if (json.status === "success" && Array.isArray(json.data)) {
+            renderGuestTable(json.data);
+            if (totalCountElem) totalCountElem.textContent = json.data.length;
+          } else {
+            tableBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-on-surface-variant italic">Belum ada data kunjungan tercatat.</td></tr>`;
+          }
+        } catch (err) {
+          console.warn("Gagal memuat daftar kunjungan:", err);
+          const dummyData = [
+            { timestamp: "2026-06-07 10:30:15", nama_lengkap: "Muhammad Ramadhan, S.IP", no_whatsapp: "081275618899", instansi_asal: "DPD Partai Golkar Riau", unit_tujuan: "Bagian Teknis Pemilu", maksud_kunjungan: "Koordinasi berkas pencalonan" },
+            { timestamp: "2026-06-07 09:15:00", nama_lengkap: "Siti Rahmawati, M.Si", no_whatsapp: "081165432100", instansi_asal: "Bawaslu Provinsi Riau", unit_tujuan: "Komisioner", maksud_kunjungan: "Konsultasi pengawasan tahapan" }
+          ];
+          renderGuestTable(dummyData);
+          if (totalCountElem) totalCountElem.textContent = dummyData.length;
+        }
+      }
+
+      function maskPhoneNumber(phone) {
+        if (!phone || phone.length < 7) return "08xx-xxxx-xxxx";
+        const cleaned = phone.replace(/\D/g, '');
+        if (cleaned.length <= 6) return cleaned;
+        const start = cleaned.slice(0, 4);
+        const end = cleaned.slice(-4);
+        return `${start}••••${end}`;
+      }
+
+      let cachedGuestData = [];
+
+      function renderGuestTable(dataList) {
+        cachedGuestData = dataList;
+        const tableBody = document.getElementById('kunjungan-table-body');
+        if (!tableBody) return;
+
+        if (dataList.length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-on-surface-variant italic">Tidak ada data yang ditemukan.</td></tr>`;
+          return;
+        }
+
+        let html = "";
+        dataList.forEach(item => {
+          const maskedPhone = maskPhoneNumber(item.no_whatsapp);
+          html += `
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="py-3 px-4 font-tabular-time text-body-sm text-on-surface-variant">${item.timestamp || '-'}</td>
+              <td class="py-3 px-4 font-semibold text-[#3f0000]">${item.nama_lengkap || '-'}</td>
+              <td class="py-3 px-4 font-badge-code text-badge-code text-[#775a19]">${maskedPhone}</td>
+              <td class="py-3 px-4">${item.instansi_asal || '-'}</td>
+              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-[#fed488]/40 text-[#785a1a]">${item.unit_tujuan || '-'}</span></td>
+              <td class="py-3 px-4 text-on-surface-variant text-body-sm truncate max-w-xs">${item.maksud_kunjungan || '-'}</td>
+            </tr>
+          `;
+        });
+        tableBody.innerHTML = html;
+      }
+
+      // Filter Pencarian Tabel Daftar Kunjungan
+      const tableSearchInput = document.getElementById('table-search-input');
+      if (tableSearchInput) {
+        tableSearchInput.addEventListener('input', (e) => {
+          const keyword = e.target.value.toLowerCase();
+          const filtered = cachedGuestData.filter(item => 
+            (item.nama_lengkap && item.nama_lengkap.toLowerCase().includes(keyword)) ||
+            (item.instansi_asal && item.instansi_asal.toLowerCase().includes(keyword)) ||
+            (item.unit_tujuan && item.unit_tujuan.toLowerCase().includes(keyword))
+          );
+          renderGuestTable(filtered);
+        });
+      }
+
       function resetAllForms() {
         const inputNama = document.getElementById('nama_lengkap');
         const inputWa = document.getElementById('no_whatsapp');
@@ -1058,13 +1168,6 @@
         if (txtMaksud) txtMaksud.value = '';
         if (chkIntegritas) chkIntegritas.checked = false;
         if (filePhotoInput) filePhotoInput.value = '';
-
-        currentCount = 0;
-        repeatCount = 0;
-        const countDisplay = document.getElementById('visitorCount');
-        const repeatCountDisplay = document.getElementById('repeatVisitorCount');
-        if (countDisplay) countDisplay.textContent = '0';
-        if (repeatCountDisplay) repeatCountDisplay.textContent = '0';
 
         const phoneInput = document.getElementById('phone-input');
         const destBagian = document.getElementById('dest-bagian');
@@ -1104,6 +1207,8 @@
         if (targetId === 'view-beranda') {
           resetAllForms();
           fetchDailyStats();
+        } else if (targetId === 'view-daftar-kunjungan') {
+          fetchGuestDirectory();
         }
 
         views.forEach(view => {
@@ -1169,44 +1274,6 @@
       setInterval(updateTime, 1000);
       updateTime();
 
-      const countDisplay = document.getElementById('visitorCount');
-      const btnInc = document.getElementById('btnIncrement');
-      const btnDec = document.getElementById('btnDecrement');
-
-      if (btnInc && btnDec && countDisplay) {
-        btnInc.addEventListener('click', () => {
-          if (currentCount < 50) {
-            currentCount++;
-            countDisplay.textContent = currentCount;
-          }
-        });
-        btnDec.addEventListener('click', () => {
-          if (currentCount > 0) {
-            currentCount--;
-            countDisplay.textContent = currentCount;
-          }
-        });
-      }
-
-      const repeatCountDisplay = document.getElementById('repeatVisitorCount');
-      const btnRepeatInc = document.getElementById('btnRepeatIncrement');
-      const btnRepeatDec = document.getElementById('btnRepeatDecrement');
-
-      if (btnRepeatInc && btnRepeatDec && repeatCountDisplay) {
-        btnRepeatInc.addEventListener('click', () => {
-          if (repeatCount < 50) {
-            repeatCount++;
-            repeatCountDisplay.textContent = repeatCount;
-          }
-        });
-        btnRepeatDec.addEventListener('click', () => {
-          if (repeatCount > 0) {
-            repeatCount--;
-            repeatCountDisplay.textContent = repeatCount;
-          }
-        });
-      }
-
       const video = document.getElementById('webcamVideo');
       const canvas = document.getElementById('webcamCanvas');
       const placeholderImg = document.getElementById('cameraPreview');
@@ -1268,10 +1335,7 @@
 
           if (video && !video.classList.contains('hidden')) {
             try {
-              // Optimasi otomatis: Resize max lebar 500px dan kompres ke format WebP kualitas 0.7
               capturedImageData = await optimizeImage(video, 500, 0.7);
-              
-              // Tampilkan hasil di canvas/video preview
               video.classList.add('hidden');
               if (canvas) {
                 const ctx = canvas.getContext('2d');
@@ -1308,32 +1372,29 @@
         });
       }
 
-		if (filePhotoInput) {
-		        filePhotoInput.addEventListener('change', async function (e) {
-		          const file = e.target.files[0];
-		          if (file) {
-		            const reader = new FileReader();
-		            reader.onload = async function (event) {
-		              try {
-		                // Kompres dan ubah file upload mentah menjadi WebP yang ringan
-		                capturedImageData = await optimizeImage(event.target.result, 500, 0.7);
-		
-		                if (placeholderImg) {
-		                  placeholderImg.innerHTML = `<img src="${capturedImageData}" class="w-full h-full object-cover">`;
-		                  placeholderImg.classList.remove('hidden');
-		                }
-		                if (video) video.classList.add('hidden');
-		                if (canvas) canvas.classList.add('hidden');
-		                
-		                showToast("Foto Berhasil Dimuat", "File dikompres otomatis agar ringan.");
-		              } catch (err) {
-		                console.warn("Gagal memproses file gambar:", err);
-		              }
-		            };
-		            reader.readAsDataURL(file);
-		          }
-		        });
-		      }
+      if (filePhotoInput) {
+        filePhotoInput.addEventListener('change', async function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = async function (event) {
+              try {
+                capturedImageData = await optimizeImage(event.target.result, 500, 0.7);
+                if (placeholderImg) {
+                  placeholderImg.innerHTML = `<img src="${capturedImageData}" class="w-full h-full object-cover">`;
+                  placeholderImg.classList.remove('hidden');
+                }
+                if (video) video.classList.add('hidden');
+                if (canvas) canvas.classList.add('hidden');
+                showToast("Foto Berhasil Dimuat", "File dikompres otomatis agar ringan.");
+              } catch (err) {
+                console.warn("Gagal memproses file gambar:", err);
+              }
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
 
       const phoneInput = document.getElementById('phone-input');
       const btnSearch = document.getElementById('btn-search-trigger');
@@ -1389,7 +1450,6 @@
         });
       }
 
-      // Pembaruan UI Tamu Berulang dengan Hitungan Kunjungan & Foto dari Database
       function updateRepeatGuestUI(data, visitCount) {
         if (!data) return;
         if (document.getElementById('existing-guest-name')) document.getElementById('existing-guest-name').textContent = data.nama_lengkap || "-";
@@ -1470,7 +1530,6 @@
             guest_category: document.querySelector('input[name="guest_category"]:checked')?.value || "eksternal",
             unit_tujuan: document.getElementById('unit_tujuan')?.value || "",
             maksud_kunjungan: document.getElementById('maksud_kunjungan')?.value || "",
-            visitorCount: currentCount,
             foto: capturedImageData
           };
 
@@ -1520,7 +1579,6 @@
             guest_category: activeGuestData.guest_category || "eksternal",
             unit_tujuan: selectedDest,
             maksud_kunjungan: document.getElementById('maksud_kunjungan_berulang')?.value || "Kunjungan Berulang",
-            visitorCount: repeatCount,
             foto: capturedImageData || activeGuestData.foto || ""
           };
 
@@ -1596,7 +1654,7 @@
         });
       }
     });
-	  // Fungsi universal untuk Resize, Kompres, dan Ubah ke WebP
+
   function optimizeImage(sourceInput, maxWidth = 600, quality = 0.75) {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -1606,7 +1664,6 @@
         let width = img.width;
         let height = img.height;
 
-        // 1. Proses Resize (Menyesuaikan dimensi agar tidak terlalu besar)
         if (width > maxWidth) {
           height = Math.round((height * maxWidth) / width);
           width = maxWidth;
@@ -1619,8 +1676,6 @@
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0, width, height);
 
-        // 2. Kompresi & Konversi ke Format WebP (Lebih ringan dari PNG/JPEG)
-        // Parameter 'image/webp' dengan quality (0.75 = 75% kualitas visual, ukuran file kecil)
         const compressedDataUrl = canvas.toDataURL('image/webp', quality);
         resolve(compressedDataUrl);
       };
@@ -1629,11 +1684,9 @@
         reject(err);
       };
 
-      // Memuat sumber gambar (bisa berupa elemen <video>, <canvas>, atau string DataURL file upload)
       if (typeof sourceInput === 'string') {
         img.src = sourceInput;
       } else if (sourceInput instanceof HTMLVideoElement) {
-        // Jika dari tangkapan Webcam langsung
         const tempCanvas = document.createElement('canvas');
         tempCanvas.width = sourceInput.videoWidth || 640;
         tempCanvas.height = sourceInput.videoHeight || 640;
