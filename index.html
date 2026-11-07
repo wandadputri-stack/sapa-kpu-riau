@@ -1041,7 +1041,7 @@
 
   <!-- SCRIPT LOGIKA JAVASCRIPT -->
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzZMuvG4Lp3QGy-kn-mjmcHtke9TUeXWxTZBcKdzp5G2GJNMSiM1nTgVdxX4t4YJHoI/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxQFaOyFs1sOQuEc8tuzBOLAP-RMGikbsDt2VqVYnC5PWkfq7xE7279z-D4IZiUkCSf/exec";
 
     let mediaStream = null;
     let capturedImageData = "";
@@ -1071,6 +1071,7 @@
       fetchDailyStats();
 
       // Fungsi untuk Memuat Daftar Kunjungan (Direktori)
+      // Fungsi untuk Memuat Daftar Kunjungan (Direktori)
       async function fetchGuestDirectory() {
         const tableBody = document.getElementById('kunjungan-table-body');
         const totalCountElem = document.getElementById('total-kunjungan-count');
@@ -1079,20 +1080,19 @@
         try {
           const res = await fetch(`${WEB_APP_URL}?action=get_guests`);
           const json = await res.json();
+          
           if (json.status === "success" && Array.isArray(json.data)) {
             renderGuestTable(json.data);
             if (totalCountElem) totalCountElem.textContent = json.data.length;
           } else {
             tableBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-on-surface-variant italic">Belum ada data kunjungan tercatat.</td></tr>`;
+            if (totalCountElem) totalCountElem.textContent = "0";
           }
         } catch (err) {
           console.warn("Gagal memuat daftar kunjungan:", err);
-          const dummyData = [
-            { timestamp: "2026-06-07 10:30:15", nama_lengkap: "Muhammad Ramadhan, S.IP", no_whatsapp: "081275618899", instansi_asal: "DPD Partai Golkar Riau", unit_tujuan: "Bagian Teknis Pemilu", maksud_kunjungan: "Koordinasi berkas pencalonan" },
-            { timestamp: "2026-06-07 09:15:00", nama_lengkap: "Siti Rahmawati, M.Si", no_whatsapp: "081165432100", instansi_asal: "Bawaslu Provinsi Riau", unit_tujuan: "Komisioner", maksud_kunjungan: "Konsultasi pengawasan tahapan" }
-          ];
-          renderGuestTable(dummyData);
-          if (totalCountElem) totalCountElem.textContent = dummyData.length;
+          // Menghapus data dummy dan menampilkan indikator error/kosong yang transparan
+          tableBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-red-700 italic">Gagal terhubung ke database server. Pastikan URL Web App benar dan izin akses sudah diatur ke "Anyone".</td></tr>`;
+          if (totalCountElem) totalCountElem.textContent = "0";
         }
       }
 
