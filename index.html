@@ -670,20 +670,82 @@
       </div>
 
       <div class="w-full px-margin py-space-xl max-w-7xl mx-auto flex flex-col gap-space-lg">
-        <!-- Statistik & Pencarian Tabel -->
-        <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
-          <div class="flex items-center gap-space-md w-full md:w-auto">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#fed488] text-[#785a1a]">
-              <span class="material-symbols-outlined text-headline-sm">table_chart</span>
+        <!-- Statistik & Panel Filter Profesional -->
+        <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col gap-space-md border border-[#e0bfba]/20">
+          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md pb-space-md border-b border-surface-container">
+            <div class="flex items-center gap-space-md">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#fed488] text-[#785a1a]">
+                <span class="material-symbols-outlined text-headline-sm">table_chart</span>
+              </div>
+              <div class="flex flex-col">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-headline-sm text-headline-sm font-bold" style="color: #3f0000;"><span id="total-kunjungan-count">0</span> Pengunjung Tercatat</span>
+                  <span id="filtered-badge" class="hidden px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#ffdad4] text-[#891c12]">Filter Aktif</span>
+                </div>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Privasi nomor kontak dilindungi otomatis (Masking)</span>
+              </div>
             </div>
-            <div class="flex flex-col">
-              <span class="font-headline-sm text-headline-sm font-bold" style="color: #3f0000;"><span id="total-kunjungan-count">0</span> Pengunjung Tercatat</span>
-              <span class="font-body-sm text-body-sm text-on-surface-variant">Privasi nomor kontak dilindungi otomatis (Masking)</span>
+
+            <!-- Kontrol Jumlah Baris Per Halaman & Reset Filter -->
+            <div class="flex flex-wrap items-center gap-space-sm w-full lg:w-auto justify-between lg:justify-end">
+              <div class="flex items-center gap-2 bg-surface-container-low px-3 py-2 rounded-lg">
+                <span class="material-symbols-outlined text-[#775a19] text-[18px]">format_list_numbered</span>
+                <label for="rows-per-page-select" class="font-label-md text-label-md text-on-surface-variant font-medium whitespace-nowrap">Tampilkan:</label>
+                <select id="rows-per-page-select" class="bg-transparent font-label-lg text-label-lg font-bold text-[#3f0000] focus:outline-none cursor-pointer pr-1">
+                  <option value="25" selected>25 Baris</option>
+                  <option value="50">50 Baris</option>
+                  <option value="100">100 Baris</option>
+                </select>
+              </div>
+              <button type="button" id="btn-reset-filter" class="px-3.5 py-2 rounded-lg bg-surface-container hover:bg-[#dae2fd] text-[#3f0000] font-label-md text-label-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">filter_alt_off</span>
+                <span>Reset Filter</span>
+              </button>
             </div>
           </div>
-          <div class="w-full md:w-72 relative">
-            <span class="material-symbols-outlined absolute left-3.5 top-3 text-[#775a19] text-[20px] pointer-events-none">search</span>
-            <input type="text" id="table-search-input" placeholder="Cari nama atau instansi..." class="w-full pl-11 pr-4 py-2.5 bg-surface-container-low rounded-lg text-body-md font-medium text-on-surface focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all">
+
+          <!-- Baris Filter Multi-Kriteria -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-space-sm items-end">
+            <!-- Pencarian Kata Kunci -->
+            <div class="lg:col-span-4 flex flex-col gap-1">
+              <label for="table-search-input" class="font-label-md text-label-md text-on-surface-variant font-semibold">Kata Kunci (Nama / Instansi / Keperluan)</label>
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-[#775a19] text-[20px] pointer-events-none">search</span>
+                <input type="text" id="table-search-input" placeholder="Ketik nama, instansi, atau maksud..." class="w-full pl-11 pr-4 py-2 bg-surface-container-low rounded-lg text-body-md font-medium text-on-surface focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all">
+              </div>
+            </div>
+
+            <!-- Filter Bagian Dituju -->
+            <div class="lg:col-span-4 flex flex-col gap-1">
+              <label for="filter-unit-select" class="font-label-md text-label-md text-on-surface-variant font-semibold">Bagian yang Dituju</label>
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-2.5 text-[#775a19] text-[20px] pointer-events-none">domain</span>
+                <select id="filter-unit-select" class="w-full pl-10 pr-8 py-2 bg-surface-container-low rounded-lg text-body-md font-medium text-on-surface focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#775a19] appearance-none cursor-pointer transition-all">
+                  <option value="">Semua Bagian KPU</option>
+                  <option value="Komisioner">Komisioner</option>
+                  <option value="Sekretaris">Sekretaris</option>
+                  <option value="Bagian Keuangan, Umum dan Logistik">Bagian Keuangan, Umum, dan Logistik</option>
+                  <option value="Bagian Partisipasi, Humas dan Organisasi">Bagian Partisipasi, Humas dan Organisasi</option>
+                  <option value="Bagian Teknis Penyelenggaraan Pemilu dan Hukum">Bagian Teknis Penyelenggaraan Pemilu dan Hukum</option>
+                  <option value="Bagian Perencanaan, Data dan Informasi">Bagian Perencanaan, Data dan Informasi</option>
+                  <option value="Meja Layanan PPID / Informasi Publik">Meja Layanan PPID / Informasi Publik</option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[#775a19] text-[20px] pointer-events-none">expand_more</span>
+              </div>
+            </div>
+
+            <!-- Filter Tanggal Mulai -->
+            <div class="lg:col-span-2 flex flex-col gap-1">
+              <label for="filter-date-start" class="font-label-md text-label-md text-on-surface-variant font-semibold">Dari Tanggal</label>
+              <input type="date" id="filter-date-start" class="w-full px-3 py-2 bg-surface-container-low rounded-lg text-body-md font-medium text-on-surface focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all">
+            </div>
+
+            <!-- Filter Tanggal Akhir -->
+            <div class="lg:col-span-2 flex flex-col gap-1">
+              <label for="filter-date-end" class="font-label-md text-label-md text-on-surface-variant font-semibold">Sampai Tanggal</label>
+              <input type="date" id="filter-date-end" class="w-full px-3 py-2 bg-surface-container-low rounded-lg text-body-md font-medium text-on-surface focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#775a19] transition-all">
+            </div>
           </div>
         </div>
 
@@ -693,6 +755,7 @@
             <table class="w-full text-left border-collapse">
               <thead>
                 <tr class="bg-[#3f0000] text-white font-label-lg text-label-lg">
+                  <th class="py-4 px-4 font-semibold w-14 text-center">No</th>
                   <th class="py-4 px-4 font-semibold">Waktu &amp; Tanggal</th>
                   <th class="py-4 px-4 font-semibold">Nama Tamu</th>
                   <th class="py-4 px-4 font-semibold">No. WhatsApp (Privasi)</th>
@@ -703,10 +766,36 @@
               </thead>
               <tbody id="kunjungan-table-body" class="divide-y divide-surface-container font-body-md text-on-surface">
                 <tr>
-                  <td colspan="6" class="py-8 text-center text-on-surface-variant italic">Memuat data direktori kunjungan dari server...</td>
+                  <td colspan="7" class="py-8 text-center text-on-surface-variant italic">Memuat data direktori kunjungan dari server...</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- Navigasi Paginasi Profesional -->
+          <div class="bg-surface-container-low px-4 py-3.5 border-t border-[#e0bfba]/20 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+            <div class="font-body-sm text-body-sm text-on-surface-variant">
+              Menampilkan <span id="page-range-start" class="font-bold text-[#3f0000]">0</span> – <span id="page-range-end" class="font-bold text-[#3f0000]">0</span> dari <span id="page-total-filtered" class="font-bold text-[#3f0000]">0</span> data kunjungan
+            </div>
+            <div class="flex items-center gap-1.5" id="pagination-controls">
+              <button type="button" id="btn-first-page" title="Halaman Pertama" class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest border border-[#e0bfba]/40 text-[#3f0000] hover:bg-[#fed488] hover:text-[#785a1a] disabled:opacity-40 disabled:pointer-events-none transition-all flex items-center justify-center cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">first_page</span>
+              </button>
+              <button type="button" id="btn-prev-page" title="Sebelumnya" class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-[#e0bfba]/40 text-[#3f0000] hover:bg-[#fed488] hover:text-[#785a1a] disabled:opacity-40 disabled:pointer-events-none transition-all flex items-center gap-1 font-label-md text-label-md font-semibold cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                <span>Sebelumnya</span>
+              </button>
+              <span class="px-3 py-1.5 rounded-lg bg-[#3f0000] text-white font-tabular-time text-body-sm font-bold">
+                Hal <span id="current-page-num">1</span> / <span id="total-pages-num">1</span>
+              </span>
+              <button type="button" id="btn-next-page" title="Berikutnya" class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-[#e0bfba]/40 text-[#3f0000] hover:bg-[#fed488] hover:text-[#785a1a] disabled:opacity-40 disabled:pointer-events-none transition-all flex items-center gap-1 font-label-md text-label-md font-semibold cursor-pointer">
+                <span>Berikutnya</span>
+                <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+              </button>
+              <button type="button" id="btn-last-page" title="Halaman Terakhir" class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest border border-[#e0bfba]/40 text-[#3f0000] hover:bg-[#fed488] hover:text-[#785a1a] disabled:opacity-40 disabled:pointer-events-none transition-all flex items-center justify-center cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">last_page</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1070,7 +1159,12 @@
 
       fetchDailyStats();
 
-      // Fungsi untuk Memuat Daftar Kunjungan (Direktori)
+      // State untuk Direktori Daftar Kunjungan, Filter & Paginasi
+      let cachedGuestData = [];
+      let filteredGuestData = [];
+      let currentPage = 1;
+      let rowsPerPage = 25;
+
       // Fungsi untuk Memuat Daftar Kunjungan (Direktori)
       async function fetchGuestDirectory() {
         const tableBody = document.getElementById('kunjungan-table-body');
@@ -1082,22 +1176,26 @@
           const json = await res.json();
           
           if (json.status === "success" && Array.isArray(json.data)) {
-            renderGuestTable(json.data);
-            if (totalCountElem) totalCountElem.textContent = json.data.length;
+            cachedGuestData = json.data;
+            currentPage = 1;
+            applyDirectoryFilters();
           } else {
-            tableBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-on-surface-variant italic">Belum ada data kunjungan tercatat.</td></tr>`;
+            cachedGuestData = [];
+            filteredGuestData = [];
+            tableBody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-on-surface-variant italic">Belum ada data kunjungan tercatat.</td></tr>`;
             if (totalCountElem) totalCountElem.textContent = "0";
+            updatePaginationUI(0, 0, 0, 1, 1);
           }
         } catch (err) {
           console.warn("Gagal memuat daftar kunjungan:", err);
-          // Menghapus data dummy dan menampilkan indikator error/kosong yang transparan
-          tableBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-red-700 italic">Gagal terhubung ke database server. Pastikan URL Web App benar dan izin akses sudah diatur ke "Anyone".</td></tr>`;
+          tableBody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-red-700 italic">Gagal terhubung ke database server. Pastikan URL Web App benar dan izin akses sudah diatur ke "Anyone".</td></tr>`;
           if (totalCountElem) totalCountElem.textContent = "0";
+          updatePaginationUI(0, 0, 0, 1, 1);
         }
       }
 
-   function maskPhoneNumber(phone) {
-        const phoneStr = String(phone || ""); // Ubah menjadi string secara aman
+      function maskPhoneNumber(phone) {
+        const phoneStr = String(phone || "");
         if (!phoneStr || phoneStr.length < 7) return "08xx-xxxx-xxxx";
         const cleaned = phoneStr.replace(/\D/g, '');
         if (cleaned.length <= 6) return cleaned;
@@ -1106,48 +1204,207 @@
         return `${start}••••${end}`;
       }
 
-      let cachedGuestData = [];
+      function extractDateOnly(timestampStr) {
+        if (!timestampStr) return "";
+        const str = String(timestampStr).trim();
+        const isoMatch = str.match(/^(\d{4}-\d{2}-\d{2})/);
+        if (isoMatch) return isoMatch[1];
+        const parsed = new Date(str);
+        if (!isNaN(parsed.getTime())) {
+          const y = parsed.getFullYear();
+          const m = String(parsed.getMonth() + 1).padStart(2, '0');
+          const d = String(parsed.getDate()).padStart(2, '0');
+          return `${y}-${m}-${d}`;
+        }
+        return "";
+      }
 
-      function renderGuestTable(dataList) {
-        cachedGuestData = dataList;
+      function applyDirectoryFilters() {
+        const keyword = (document.getElementById('table-search-input')?.value || "").toLowerCase().trim();
+        const selectedUnit = (document.getElementById('filter-unit-select')?.value || "").trim();
+        const startDate = document.getElementById('filter-date-start')?.value || "";
+        const endDate = document.getElementById('filter-date-end')?.value || "";
+
+        const isFilterActive = Boolean(keyword || selectedUnit || startDate || endDate);
+        const filteredBadge = document.getElementById('filtered-badge');
+        if (filteredBadge) {
+          if (isFilterActive) {
+            filteredBadge.classList.remove('hidden');
+          } else {
+            filteredBadge.classList.add('hidden');
+          }
+        }
+
+        filteredGuestData = cachedGuestData.filter(item => {
+          const matchKeyword = !keyword || (
+            (item.nama_lengkap && String(item.nama_lengkap).toLowerCase().includes(keyword)) ||
+            (item.instansi_asal && String(item.instansi_asal).toLowerCase().includes(keyword)) ||
+            (item.unit_tujuan && String(item.unit_tujuan).toLowerCase().includes(keyword)) ||
+            (item.maksud_kunjungan && String(item.maksud_kunjungan).toLowerCase().includes(keyword))
+          );
+
+          const matchUnit = !selectedUnit || (
+            item.unit_tujuan && String(item.unit_tujuan).trim().toLowerCase() === selectedUnit.toLowerCase()
+          );
+
+          let matchDate = true;
+          if (startDate || endDate) {
+            const itemDate = extractDateOnly(item.timestamp);
+            if (!itemDate) {
+              matchDate = false;
+            } else {
+              if (startDate && itemDate < startDate) matchDate = false;
+              if (endDate && itemDate > endDate) matchDate = false;
+            }
+          }
+
+          return matchKeyword && matchUnit && matchDate;
+        });
+
+        const totalCountElem = document.getElementById('total-kunjungan-count');
+        if (totalCountElem) {
+          totalCountElem.textContent = filteredGuestData.length;
+        }
+
+        const totalPages = Math.max(1, Math.ceil(filteredGuestData.length / rowsPerPage));
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        renderGuestTable();
+      }
+
+      function updatePaginationUI(startNum, endNum, totalFiltered, page, totalPages) {
+        const startEl = document.getElementById('page-range-start');
+        const endEl = document.getElementById('page-range-end');
+        const totalEl = document.getElementById('page-total-filtered');
+        const currPageEl = document.getElementById('current-page-num');
+        const totalPagesEl = document.getElementById('total-pages-num');
+
+        if (startEl) startEl.textContent = startNum;
+        if (endEl) endEl.textContent = endNum;
+        if (totalEl) totalEl.textContent = totalFiltered;
+        if (currPageEl) currPageEl.textContent = page;
+        if (totalPagesEl) totalPagesEl.textContent = totalPages;
+
+        const btnFirst = document.getElementById('btn-first-page');
+        const btnPrev = document.getElementById('btn-prev-page');
+        const btnNext = document.getElementById('btn-next-page');
+        const btnLast = document.getElementById('btn-last-page');
+
+        if (btnFirst) btnFirst.disabled = page <= 1 || totalFiltered === 0;
+        if (btnPrev) btnPrev.disabled = page <= 1 || totalFiltered === 0;
+        if (btnNext) btnNext.disabled = page >= totalPages || totalFiltered === 0;
+        if (btnLast) btnLast.disabled = page >= totalPages || totalFiltered === 0;
+      }
+
+      function renderGuestTable() {
         const tableBody = document.getElementById('kunjungan-table-body');
         if (!tableBody) return;
 
-        if (dataList.length === 0) {
-          tableBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-on-surface-variant italic">Tidak ada data yang ditemukan.</td></tr>`;
+        const totalFiltered = filteredGuestData.length;
+        const totalPages = Math.max(1, Math.ceil(totalFiltered / rowsPerPage));
+
+        if (totalFiltered === 0) {
+          tableBody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-on-surface-variant italic">Tidak ada data kunjungan yang sesuai dengan filter.</td></tr>`;
+          updatePaginationUI(0, 0, 0, 1, 1);
           return;
         }
 
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const endIndex = Math.min(startIndex + rowsPerPage, totalFiltered);
+        const pageSlice = filteredGuestData.slice(startIndex, endIndex);
+
         let html = "";
-        dataList.forEach(item => {
+        pageSlice.forEach((item, idx) => {
+          const rowNumber = startIndex + idx + 1;
           const maskedPhone = maskPhoneNumber(item.no_whatsapp);
           html += `
             <tr class="hover:bg-surface-container-low transition-colors">
-              <td class="py-3 px-4 font-tabular-time text-body-sm text-on-surface-variant">${item.timestamp || '-'}</td>
+              <td class="py-3 px-4 text-center font-tabular-time text-body-sm text-on-surface-variant font-semibold">${rowNumber}</td>
+              <td class="py-3 px-4 font-tabular-time text-body-sm text-on-surface-variant whitespace-nowrap">${item.timestamp || '-'}</td>
               <td class="py-3 px-4 font-semibold text-[#3f0000]">${item.nama_lengkap || '-'}</td>
-              <td class="py-3 px-4 font-badge-code text-badge-code text-[#775a19]">${maskedPhone}</td>
+              <td class="py-3 px-4 font-badge-code text-badge-code text-[#775a19] whitespace-nowrap">${maskedPhone}</td>
               <td class="py-3 px-4">${item.instansi_asal || '-'}</td>
-              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-[#fed488]/40 text-[#785a1a]">${item.unit_tujuan || '-'}</span></td>
-              <td class="py-3 px-4 text-on-surface-variant text-body-sm truncate max-w-xs">${item.maksud_kunjungan || '-'}</td>
+              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-[#fed488]/40 text-[#785a1a] inline-block">${item.unit_tujuan || '-'}</span></td>
+              <td class="py-3 px-4 text-on-surface-variant text-body-sm max-w-xs" title="${(item.maksud_kunjungan || '').replace(/"/g, '&quot;')}">${item.maksud_kunjungan || '-'}</td>
             </tr>
           `;
         });
         tableBody.innerHTML = html;
+        updatePaginationUI(startIndex + 1, endIndex, totalFiltered, currentPage, totalPages);
       }
 
-      // Filter Pencarian Tabel Daftar Kunjungan
+      // Event Listeners Filter & Paginasi Daftar Kunjungan
       const tableSearchInput = document.getElementById('table-search-input');
+      const filterUnitSelect = document.getElementById('filter-unit-select');
+      const filterDateStart = document.getElementById('filter-date-start');
+      const filterDateEnd = document.getElementById('filter-date-end');
+      const rowsPerPageSelect = document.getElementById('rows-per-page-select');
+      const btnResetFilter = document.getElementById('btn-reset-filter');
+
       if (tableSearchInput) {
-        tableSearchInput.addEventListener('input', (e) => {
-          const keyword = e.target.value.toLowerCase();
-          const filtered = cachedGuestData.filter(item => 
-            (item.nama_lengkap && item.nama_lengkap.toLowerCase().includes(keyword)) ||
-            (item.instansi_asal && item.instansi_asal.toLowerCase().includes(keyword)) ||
-            (item.unit_tujuan && item.unit_tujuan.toLowerCase().includes(keyword))
-          );
-          renderGuestTable(filtered);
+        tableSearchInput.addEventListener('input', () => {
+          currentPage = 1;
+          applyDirectoryFilters();
         });
       }
+      if (filterUnitSelect) {
+        filterUnitSelect.addEventListener('change', () => {
+          currentPage = 1;
+          applyDirectoryFilters();
+        });
+      }
+      if (filterDateStart) {
+        filterDateStart.addEventListener('change', () => {
+          currentPage = 1;
+          applyDirectoryFilters();
+        });
+      }
+      if (filterDateEnd) {
+        filterDateEnd.addEventListener('change', () => {
+          currentPage = 1;
+          applyDirectoryFilters();
+        });
+      }
+      if (rowsPerPageSelect) {
+        rowsPerPageSelect.addEventListener('change', (e) => {
+          rowsPerPage = parseInt(e.target.value, 10) || 25;
+          currentPage = 1;
+          renderGuestTable();
+        });
+      }
+      if (btnResetFilter) {
+        btnResetFilter.addEventListener('click', () => {
+          if (tableSearchInput) tableSearchInput.value = "";
+          if (filterUnitSelect) filterUnitSelect.value = "";
+          if (filterDateStart) filterDateStart.value = "";
+          if (filterDateEnd) filterDateEnd.value = "";
+          currentPage = 1;
+          applyDirectoryFilters();
+        });
+      }
+
+      document.getElementById('btn-first-page')?.addEventListener('click', () => {
+        currentPage = 1;
+        renderGuestTable();
+      });
+      document.getElementById('btn-prev-page')?.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderGuestTable();
+        }
+      });
+      document.getElementById('btn-next-page')?.addEventListener('click', () => {
+        const totalPages = Math.max(1, Math.ceil(filteredGuestData.length / rowsPerPage));
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderGuestTable();
+        }
+      });
+      document.getElementById('btn-last-page')?.addEventListener('click', () => {
+        currentPage = Math.max(1, Math.ceil(filteredGuestData.length / rowsPerPage));
+        renderGuestTable();
+      });
 
       function resetAllForms() {
         const inputNama = document.getElementById('nama_lengkap');
